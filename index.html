@@ -1,24 +1,131 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="sv" xml:lang="sv">
+<!DOCTYPE html>
+<html lang="sv">
 <head>
-  <title>Svenska Coders</title>
-  <style type="text/css">
-body{text-align:center;border-top:4px solid #d1d1d1;margin:0;font-size:12px;font-family:"Trebuchet MS",Helvetica,Arial,Verdana,sans-serif}
-img{border:0}
-#wrap{width:961px;text-align:left;margin:0 auto}
-#home{margin-right:100px}
-#home h1{font-size:22px;color:#666}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Min WSL-guide</title>
+    <style>
+        /* Här kommer din CSS-styling */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            border-left: 5px solid #007bff;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #e9e9e9;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .note {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
-  <div id="wrap">
-    <div id="body">
-      <img src="/avbrott.png" alt="Svensk Fitta" />
-      <div id="home">
-         <h1>Detta är ingen kaffe rast, vi jobbar hårt med nya sidor!</h1>
-         <p>Uppdaterar till 2.0 =)</p>
-      </div>
+    <div class="container">
+        <h1>Min Personliga WSL-guide</h1>
+        <p>Välkommen till din snabbguide för Windows Subsystem for Linux (WSL). Här hittar du viktig information och användbara kommandon för att få ut det mesta av din Linux-miljö på Windows.</p>
+
+        ---
+
+        <h2>Vad är WSL?</h2>
+        <p><strong>Windows Subsystem for Linux (WSL)</strong> låter utvecklare köra en GNU/Linux-miljö — inklusive de flesta kommandoradsverktyg, verktyg och applikationer — direkt på Windows, omodifierad, utan omkostnaderna för en traditionell virtuell maskin eller dual-boot-konfiguration.</p>
+        <p>Det är ett kraftfullt verktyg för utvecklare som vill utnyttja Linux kraft i sin Windows-miljö, perfekt för webbutveckling, skriptning, systemadministration och mycket mer.</p>
+
+        ---
+
+        <h2>Installation och Grundläggande Användning</h2>
+        <h3>Installation (WSL 2 rekommenderas)</h3>
+        <p>Öppna PowerShell eller Kommandotolken som administratör och kör:</p>
+        <pre><code>wsl --install</code></pre>
+        <p>Detta installerar WSL, Ubuntu (som standarddistribution) och de nödvändiga komponenterna. Starta om datorn efter installationen.</p>
+
+        <h3>Starta WSL</h3>
+        <p>Du kan starta din standard-Linux-distribution genom att:</p>
+        <ul>
+            <li>Öppna "Ubuntu" (eller din distribution) från Startmenyn.</li>
+            <li>Öppna Kommandotolken eller PowerShell och skriva <code>wsl</code>.</li>
+        </ul>
+
+        ---
+
+        <h2>Vanliga WSL-kommandon i Windows</h2>
+        <p>Dessa kommandon körs i **Kommandotolken (CMD)** eller **PowerShell** i Windows, inte inuti din Linux-distribution.</p>
+        <ul>
+            <li><code>wsl --list --verbose</code> eller <code>wsl -l -v</code>: Visar en lista över installerade Linux-distributioner, deras status och vilken version av WSL de använder (WSL 1 eller WSL 2).</li>
+            <li><code>wsl --set-default &lt;DistributionName&gt;</code>: Ställer in din standarddistribution. T.ex. <code>wsl --set-default Ubuntu</code>.</li>
+            <li><code>wsl --set-version &lt;DistributionName&gt; &lt;Version&gt;</code>: Konverterar en distribution till WSL 1 eller WSL 2. T.ex. <code>wsl --set-version Ubuntu 2</code>.</li>
+            <li><code>wsl --shutdown</code>: Stänger av alla körande WSL-distributioner. Användbart om du har problem eller vill frigöra resurser.</li>
+            <li><code>wsl --terminate &lt;DistributionName&gt;</code>: Stänger av en specifik distribution. T.ex. <code>wsl --terminate Ubuntu</code>.</li>
+            <li><code>wsl --unregister &lt;DistributionName&gt;</code>: Avinstallerar en distribution. **Varning: Detta raderar all data för den distributionen!**</li>
+            <li><code>wsl --update</code>: Uppdaterar WSL-kärnan till den senaste versionen.</li>
+        </ul>
+
+        ---
+
+        <h2>Tips och Tricks för WSL</h2>
+        <h3>Åtkomst till Windows-filer från Linux</h3>
+        <p>Dina Windows-enheter är monterade under <code>/mnt/</code> i Linux. T.ex. är din C-enhet tillgänglig via:</p>
+        <pre><code>cd /mnt/c/Users/DittAnvändarnamn/Desktop</code></pre>
+
+        <h3>Åtkomst till Linux-filer från Windows</h3>
+        <p>Du kan enkelt komma åt dina Linux-filer via nätverksplatsen <code>\\wsl$</code> i Utforskaren. Skriv bara <code>\\wsl$</code> i adressfältet i Utforskaren.</p>
+        <div class="note">
+            <strong>OBS:</strong> Undvik att redigera Linux-filer med Windows-verktyg om du inte använder en Linux-kompatibel editor som VS Code med WSL-extensionen, då det kan orsaka problem med filrättigheter och prestanda.
+        </div>
+
+        <h3>VS Code och WSL</h3>
+        <p>Visual Studio Code har en fantastisk WSL-integration. Öppna din Linux-projektmapp i VS Code från WSL med:</p>
+        <pre><code>code .</code></pre>
+        <p>(Se till att du har VS Code installerat och den <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl" target="_blank">WSL Remote Development-extensionen</a> installerad).</p>
+
+        ---
+
+        <h2>Resurser och Länkar</h2>
+        <ul>
+            <li><a href="https://docs.microsoft.com/sv-se/windows/wsl/" target="_blank">Microsofts Officiella WSL-dokumentation</a> - Den mest kompletta källan.</li>
+            <li><a href="https://devblogs.microsoft.com/commandline/" target="_blank">Windows Command Line Blogg</a> - Nyheter och djupdykningar om WSL och andra kommandoradsverktyg.</li>
+            <li><a href="https://github.com/microsoft/WSL" target="_blank">WSL på GitHub</a> - Rapportera buggar eller bidra.</li>
+        </ul>
+
+        <p>Denna sida är designad för att vara en snabb referens för dina dagliga WSL-behov. Anpassa den gärna med dina egna favoritkommandon, projekt eller anteckningar!</p>
     </div>
-  </div>
 </body>
 </html>
