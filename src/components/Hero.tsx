@@ -1,5 +1,12 @@
 import Link from 'next/link'
 
+<Link
+  href="https://github.com/vinberg88/opensuse/blob/main/Fedora42-KDE6.txt"
+  className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
+>
+  Latest For WSL - FEDORA 42 and KDE 6
+</Link>
+
 export default function Hero() {
   return (
     <section className="bg-gradient-to-b from-wsl-blue to-blue-700 text-white">
