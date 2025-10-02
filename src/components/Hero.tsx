@@ -9,7 +9,7 @@ export default function Hero() {
             Setup Windows Subsystem for Linux
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
-           <a href="https://github.com/vinberg88/opensuse/blob/main/Fedora42-KDE6.txt" class="button" target="_blank">Senaste projekt för WSl och Fedora 42</a>
+           <a href="https://github.com/vinberg88/opensuse/blob/main/Fedora42-KDE6.txt" class="button" target="_blank">Latest Projekt for WSl and Fedora 42</a>
           <img src="https://lh3.googleusercontent.com/a/ACg8ocIsVLpogTErfcIeG65iS3MKzgtHCIuaxuo2Te9BmkBYPVci96qs=s288-c-no" alt="Matias Vinberg">
             Your comprehensive guide to WSL - from installation to advanced development workflows. 
             Learn how to seamlessly integrate Linux tools with Windows development.
