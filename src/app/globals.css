@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold text-gray-900;
+  }
+}
+
+@layer components {
+  .terminal-window {
+    @apply bg-terminal-bg text-terminal-text rounded-lg shadow-lg;
+  }
+  
+  .terminal-header {
+    @apply bg-gray-700 rounded-t-lg px-4 py-2 flex items-center space-x-2;
+  }
+  
+  .terminal-dot {
+    @apply w-3 h-3 rounded-full;
+  }
+  
+  .terminal-content {
+    @apply p-4 font-mono text-sm;
+  }
+  
+  .code-block {
+    @apply bg-gray-800 text-gray-100 rounded-lg p-4 overflow-x-auto;
+  }
+  
+  .nav-link {
+    @apply text-gray-600 hover:text-wsl-blue transition-colors duration-200;
+  }
+  
+  .nav-link.active {
+    @apply text-wsl-blue font-medium;
+  }
+  
+  .btn-primary {
+    @apply bg-wsl-blue text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-800 px-6 py-3 rounded-lg hover:bg-gray-300 transition-colors duration-200 font-medium;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6 border border-gray-200;
+  }
+  
+  .feature-card {
+    @apply card hover:shadow-lg transition-shadow duration-200;
+  }
+}
