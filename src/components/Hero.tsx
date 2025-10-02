@@ -8,12 +8,16 @@ export default function Hero() {
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Setup Windows Subsystem for Linux
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
-           <a href="https://github.com/vinberg88/opensuse/blob/main/Fedora42-KDE6.txt" class="button" target="_blank">Latest Projekt for WSl and Fedora 42</a>
-          <img src="https://lh3.googleusercontent.com/a/ACg8ocIsVLpogTErfcIeG65iS3MKzgtHCIuaxuo2Te9BmkBYPVci96qs=s288-c-no" alt="Matias Vinberg">
-            Your comprehensive guide to WSL - from installation to advanced development workflows. 
-            Learn how to seamlessly integrate Linux tools with Windows development.
-          </p>
+          <div className="mb-8">
+            <a href="https://github.com/vinberg88/opensuse/blob/main/Fedora42-KDE6.txt" className="inline-block bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-4 transition-colors" target="_blank" rel="noopener noreferrer">Latest Project for WSL and Fedora 42</a>
+            <div className="mb-4">
+              <img src="https://lh3.googleusercontent.com/a/ACg8ocIsVLpogTErfcIeG65iS3MKzgtHCIuaxuo2Te9BmkBYPVci96qs=s288-c-no" alt="Matias Vinberg" className="rounded-full w-32 h-32 mx-auto mb-4" />
+            </div>
+            <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto">
+              Your comprehensive guide to WSL - from installation to advanced development workflows. 
+              Learn how to seamlessly integrate Linux tools with Windows development.
+            </p>
+          </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/installation"
