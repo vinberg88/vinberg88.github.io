@@ -21,11 +21,13 @@ export default function Hero() {
             alt="Matias Vinberg"
             style={{ display: "block", margin: "1rem auto" }}
           />
-           </div>
-            Your guide to WSL - from installation to advanced development workflows. 
-            Learn how to seamlessly integrate Linux tools with Windows development.
         </div>
-      <br />
+        {/* Moved closing div above to fix JSX structure */}
+        <div>
+          Your guide to WSL - from installation to advanced development workflows. 
+          Learn how to seamlessly integrate Linux tools with Windows development.
+        </div>
+        <br />
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href="/installation"
