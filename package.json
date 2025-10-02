@@ -9,28 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@mdx-js/loader": "^3.0.0",
-    "@mdx-js/react": "^3.0.0",
-    "@next/mdx": "^15.5.4",
     "@tailwindcss/typography": "^0.5.19",
-    "@types/dotenv": "^8.2.3",
     "@types/nodemailer": "^7.0.2",
     "autoprefixer": "^10.4.21",
-    "dotenv": "^17.2.3",
-    "gray-matter": "^4.0.3",
     "next": "15.5.4",
     "nodemailer": "^7.0.6",
-    "prismjs": "^1.29.0",
     "react": "^18",
-    "react-dom": "^18",
-    "react-syntax-highlighter": "^15.5.0"
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@types/node": "^20",
-    "@types/prismjs": "^1.26.3",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "@types/react-syntax-highlighter": "^15.5.11",
     "eslint": "^8",
     "eslint-config-next": "15.5.4",
     "postcss": "^8.5.6",
