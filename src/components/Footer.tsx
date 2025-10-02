@@ -63,7 +63,7 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2025 WSL Guide. This is an unofficial community resource. WSL is a trademark of Microsoft Corporation.</p>
+          <p>&copy; 2025 WSL Guide from Sweden. This is an unofficial community resource. WSL is a trademark of Microsoft Corporation.</p>
         </div>
       </div>
     </footer>
