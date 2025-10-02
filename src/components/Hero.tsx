@@ -8,40 +8,38 @@ export default function Hero() {
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Setup Windows Subsystem for Linux - 2025
           </h1>
-<div className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
- <Link
- href="https://github.com/vinberg88/opensuse/blob/main/Fedora42-KDE6.txtn"
- className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-wsl-blue transition-colors duration-200 text-lg"
- >
-Latest Project For WSL - FEDORA 42 and KDE 6
-</Link>
-       </div>
-       <img
-    src="https://lh3.googleusercontent.com/a/ACg8ocIsVLpogTErfcIeG65iS3MKzgtHCIuaxuo2Te9BmkBYPVci96qs=s288-c-no"
-    alt="Matias Vinberg"
-    style={{ display: "block", margin: "1rem auto" }}
-  />
-  <div>
-    Your comprehensive guide to WSL - from installation to advanced development workflows. 
-    Learn how to seamlessly integrate Linux tools with Windows development.
-  </div>
-</div>
-         <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
             <Link
-              href="/installation"
-              className="bg-white text-wsl-blue px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 text-lg"
-            >
-              Get Started
-            </Link>
-            <Link
-              href="/configuration"
+              href="https://github.com/vinberg88/opensuse/blob/main/Fedora42-KDE6.txtn"
               className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-wsl-blue transition-colors duration-200 text-lg"
             >
-              Configuration Guide
+              Latest Project For WSL - FEDORA 42 and KDE 6
             </Link>
           </div>
+          <img
+            src="https://lh3.googleusercontent.com/a/ACg8ocIsVLpogTErfcIeG65iS3MKzgtHCIuaxuo2Te9BmkBYPVci96qs=s288-c-no"
+            alt="Matias Vinberg"
+            style={{ display: "block", margin: "1rem auto" }}
+          />
+          <div>
+            Your comprehensive guide to WSL - from installation to advanced development workflows. 
+            Learn how to seamlessly integrate Linux tools with Windows development.
+          </div>
         </div>
-        
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link
+            href="/installation"
+            className="bg-white text-wsl-blue px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 text-lg"
+          >
+            Get Started
+          </Link>
+          <Link
+            href="/configuration"
+            className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-wsl-blue transition-colors duration-200 text-lg"
+          >
+            Configuration Guide
+          </Link>
+        </div>
         <div className="mt-16">
           <div className="terminal-window max-w-4xl mx-auto">
             <div className="terminal-header">
