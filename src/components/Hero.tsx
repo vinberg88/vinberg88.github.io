@@ -1,30 +1,24 @@
 import Link from 'next/link'
 
-<Link
-  href="https://github.com/vinberg88/opensuse/blob/main/Fedora42-KDE6.txt"
-  className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
->
-  Latest For WSL - FEDORA 42 and KDE 6
-</Link>
-
 export default function Hero() {
   return (
     <section className="bg-gradient-to-b from-wsl-blue to-blue-700 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Setup Windows Subsystem for Linux
+            Setup Windows Subsystem for Linux - 2025
           </h1>
       <div className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
-  <a
-    href="https://github.com/vinberg88/opensuse/blob/main/Fedora42-KDE6.txt"
-    className="button"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    Senaste projekt för WSl och Fedora 42
-  </a>
-  <img
+         </Link>
+            <Link
+              href="https://github.com/vinberg88/opensuse/blob/main/Fedora42-KDE6.txtn"
+              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-wsl-blue transition-colors duration-200 text-lg"
+            >
+              Latest Project For WSL - FEDORA 42 and KDE 6
+            </Link>
+          </div>
+       </div>
+       <img
     src="https://lh3.googleusercontent.com/a/ACg8ocIsVLpogTErfcIeG65iS3MKzgtHCIuaxuo2Te9BmkBYPVci96qs=s288-c-no"
     alt="Matias Vinberg"
     style={{ display: "block", margin: "1rem auto" }}
