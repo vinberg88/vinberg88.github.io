@@ -22,6 +22,7 @@ export default function Hero() {
             style={{ display: "block", margin: "1rem auto" }}
           />
           <div>
+           </div>
             Your guide to WSL - from installation to advanced development workflows. 
             Learn how to seamlessly integrate Linux tools with Windows development.
           </div>
