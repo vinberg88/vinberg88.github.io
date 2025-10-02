@@ -1,6 +1,6 @@
-Tips and tricks for WSL and Windows 11
+Tips and tricks for WSL and Windows 11 - WSL - 2025
 
-https://vinberg88.github.io
+Main Page - https://vinberg88.github.io
 
 ABOUT WSL for WINDOWS 11 - https://learn.microsoft.com/en-us/windows/wsl/about
 
