@@ -8,8 +8,6 @@ export default function Hero() {
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Setup Windows Subsystem for Linux - 2025
           </h1>
-      <div className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
-
 <div className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
  <Link
  href="https://github.com/vinberg88/opensuse/blob/main/Fedora42-KDE6.txtn"
@@ -17,7 +15,6 @@ export default function Hero() {
  >
 Latest Project For WSL - FEDORA 42 and KDE 6
 </Link>
-     </div>
        </div>
        <img
     src="https://lh3.googleusercontent.com/a/ACg8ocIsVLpogTErfcIeG65iS3MKzgtHCIuaxuo2Te9BmkBYPVci96qs=s288-c-no"
