@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WSL Guide – Installation</title>
+  <meta name="description" content="How to install and configure Windows Subsystem for Linux (WSL) on Windows 10/11." />
+
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="theme-toggle.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand-wrapper">
+        <div class="brand-logo">
+          <div class="logo-circle">
+            <span class="logo-g">G</span>
+          </div>
+          <div class="logo-text">
+            <span class="logo-main">God Mode</span>
+            <span class="logo-sub">WSL</span>
+          </div>
+        </div>
+
+        <div class="brand">
+          <span class="brand-title">WSL Guide</span>
+          <span class="brand-subtitle">Installation</span>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Overview</a>
+        <a href="installation.html" class="nav-link active">Installation</a>
+        <a href="daily-usage.html" class="nav-link">Daily usage</a>
+        <a href="tips-and-tricks.html" class="nav-link">Tips &amp; tricks</a>
+        <a href="troubleshooting.html" class="nav-link">Troubleshooting</a>
+      </nav>
+
+      <div class="header-right">
+        <img
+          src="https://github.com/vinberg88.png"
+          alt="Profile picture of vinberg88"
+          class="avatar"
+          loading="lazy"
+        />
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          🌙
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="content">
+      <h1>Installing WSL</h1>
+      <p class="lede">
+        Installing WSL is straightforward on modern versions of Windows 10 and Windows 11.
+        This guide focuses on WSL 2, which is the recommended version for most users.
+      </p>
+
+      <section>
+        <h2>Requirements</h2>
+        <ul>
+          <li>Windows 10 version 2004 or later (Build 19041 or higher), or any recent Windows 11 build.</li>
+          <li>Administrator privileges (you need to run some commands as an administrator).</li>
+          <li>Internet connection (for downloading the Linux distribution and optional components).</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Quick installation with <code>wsl --install</code></h2>
+        <p>
+          On supported systems, the simplest way to install WSL is by using a single command
+          in an elevated PowerShell or Windows Terminal:
+        </p>
+
+        <pre><code>wsl --install</code></pre>
+
+        <p>
+          This command will:
+        </p>
+        <ul>
+          <li>Enable the required Windows features.</li>
+          <li>Download and install the default Linux distribution (usually Ubuntu).</li>
+          <li>Set WSL 2 as the default version (on supported systems).</li>
+        </ul>
+
+        <p>
+          After the installation completes, you may need to restart your computer. When you
+          start the distribution for the first time, you will be asked to create a Linux user
+          name and password.
+        </p>
+      </section>
+
+      <section>
+        <h2>Manual installation steps (advanced)</h2>
+        <p>
+          If <code>wsl --install</code> is not available or if you want full control, you can
+          enable WSL manually:
+        </p>
+
+        <ol>
+          <li>
+            <strong>Enable WSL and Virtual Machine Platform</strong><br />
+            Open an elevated PowerShell and run:
+            <pre><code>dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart</code></pre>
+          </li>
+          <li>
+            <strong>Restart Windows</strong><br />
+            A reboot is required for the changes to take effect.
+          </li>
+          <li>
+            <strong>Set WSL 2 as the default</strong><br />
+            After reboot, open a terminal and run:
+            <pre><code>wsl --set-default-version 2</code></pre>
+          </li>
+          <li>
+            <strong>Install a Linux distribution</strong><br />
+            Open the Microsoft Store and search for distributions such as:
+            <ul>
+              <li>Ubuntu</li>
+              <li>Debian</li>
+              <li>Kali Linux</li>
+              <li>openSUSE Leap</li>
+            </ul>
+            Choose one, click <em>Get</em>, then <em>Install</em>. When done, launch it from
+            the Start menu and follow the initial setup.
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Managing multiple distributions</h2>
+        <p>
+          You can install several Linux distributions side by side. Use these commands
+          in PowerShell or Command Prompt:
+        </p>
+
+        <pre><code># List all installed distributions
+wsl --list --verbose
+
+# Set the default distribution
+wsl --set-default &lt;DistributionName&gt;
+
+# Set a distribution to use WSL 2
+wsl --set-version &lt;DistributionName&gt; 2</code></pre>
+
+        <p>
+          Replace <code>&lt;DistributionName&gt;</code> with names like <code>Ubuntu</code>,
+          <code>Debian</code>, etc., as shown by <code>wsl --list --verbose</code>.
+        </p>
+      </section>
+
+      <section>
+        <h2>Uninstalling and resetting WSL</h2>
+        <p>
+          If you want to remove a specific distribution, you can:
+        </p>
+        <ol>
+          <li>Open <strong>Settings &gt; Apps &gt; Installed apps</strong>.</li>
+          <li>Find the distribution (e.g., Ubuntu) and uninstall it.</li>
+        </ol>
+
+        <p>
+          To unregister (reset) a distribution from the command line:
+        </p>
+        <pre><code>wsl --unregister &lt;DistributionName&gt;</code></pre>
+
+        <p class="note">
+          <strong>Warning:</strong> Unregistering a distribution will delete all files and
+          configuration inside that distribution. Make backups first.
+        </p>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; <span id="year"></span> WSL Guide by vinberg88</span>
+      <span class="footer-note">Installation · Dark mode ready</span>
+    </div>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WSL Guide – Daily usage</title>
+  <meta name="description" content="How to use WSL in your daily workflow: terminals, files, editors, and networking." />
+
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="theme-toggle.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand-wrapper">
+        <div class="brand-logo">
+          <div class="logo-circle">
+            <span class="logo-g">G</span>
+          </div>
+          <div class="logo-text">
+            <span class="logo-main">God Mode</span>
+            <span class="logo-sub">WSL</span>
+          </div>
+        </div>
+
+        <div class="brand">
+          <span class="brand-title">WSL Guide</span>
+          <span class="brand-subtitle">Daily usage</span>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Overview</a>
+        <a href="installation.html" class="nav-link">Installation</a>
+        <a href="daily-usage.html" class="nav-link active">Daily usage</a>
+        <a href="tips-and-tricks.html" class="nav-link">Tips &amp; tricks</a>
+        <a href="troubleshooting.html" class="nav-link">Troubleshooting</a>
+      </nav>
+
+      <div class="header-right">
+        <img
+          src="https://github.com/vinberg88.png"
+          alt="Profile picture of vinberg88"
+          class="avatar"
+          loading="lazy"
+        />
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          🌙
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="content">
+      <h1>Daily usage in WSL</h1>
+      <p class="lede">
+        Once WSL is installed, you can treat your Linux distribution almost like a regular Linux
+        machine. This page shows practical day-to-day usage patterns.
+      </p>
+
+      <section>
+        <h2>Starting WSL</h2>
+        <ul>
+          <li>Open the Start menu and run your Linux distribution (e.g. “Ubuntu”).</li>
+          <li>Use Windows Terminal and add a WSL profile for quick access.</li>
+          <li>From Command Prompt or PowerShell:
+            <pre><code>wsl</code></pre>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Basic navigation</h2>
+        <p>
+          Inside WSL, you are in a typical Linux environment:
+        </p>
+        <pre><code># Print current directory
+pwd
+
+# List files
+ls
+ls -la
+
+# Change directory
+cd /home/&lt;your-user&gt;
+cd /mnt/c/Users/&lt;YourWindowsUser&gt;</code></pre>
+
+        <p>
+          Your Windows drives are mounted under <code>/mnt</code>:
+        </p>
+        <ul>
+          <li><code>/mnt/c</code> → <code>C:\</code> drive</li>
+          <li><code>/mnt/d</code> → <code>D:\</code> drive (if present)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Package management</h2>
+        <p>
+          The package manager depends on your distribution. For Ubuntu and Debian:
+        </p>
+        <pre><code># Update package list and upgrade packages
+sudo apt update
+sudo apt upgrade
+
+# Install tools
+sudo apt install git curl build-essential</code></pre>
+      </section>
+
+      <section>
+        <h2>Working with code and editors</h2>
+        <p>
+          A common workflow is:
+        </p>
+        <ol>
+          <li>Store your code in the Linux filesystem (e.g. <code>/home/&lt;user&gt;/projects</code>).</li>
+          <li>Use WSL for builds, package managers, and CLI tools.</li>
+          <li>Use Windows editors or IDEs connected to WSL.</li>
+        </ol>
+
+        <h3>Visual Studio Code with WSL</h3>
+        <p>
+          Install VS Code on Windows and the “Remote - WSL” extension. Then:
+        </p>
+        <pre><code># In WSL terminal, inside your project folder
+code .</code></pre>
+        <p>
+          This opens VS Code on Windows but runs the server-side components in WSL, giving you
+          Linux paths, compilers, and tools directly in the editor.
+        </p>
+      </section>
+
+      <section>
+        <h2>Running services</h2>
+        <p>
+          You can run web servers and other daemons in WSL as usual:
+        </p>
+        <pre><code># Example: simple Python HTTP server
+cd /home/&lt;user&gt;/projects/my-site
+python3 -m http.server 8000</code></pre>
+
+        <p>
+          On WSL 2, you can often reach services via <code>localhost</code> from Windows.
+          If that fails, use:
+        </p>
+        <pre><code>wsl hostname -I</code></pre>
+        <p>
+          to get the WSL IP and then browse to <code>http://&lt;WSL-IP&gt;:8000</code>.
+        </p>
+      </section>
+
+      <section>
+        <h2>Interop between Windows and Linux</h2>
+        <p>
+          WSL allows you to mix commands from both worlds:
+        </p>
+        <pre><code># From WSL: open a file in Notepad
+notepad.exe /mnt/c/Users/&lt;YourWindowsUser&gt;/Desktop/test.txt
+
+# From Windows PowerShell: run a Linux command
+wsl ls -la /</code></pre>
+
+        <p>
+          This makes it easy to leverage both environments without constantly switching context.
+        </p>
+      </section>
+
+      <section>
+        <h2>Shutting down WSL</h2>
+        <p>
+          WSL distributions automatically stop when not in use. To shut them down manually:
+        </p>
+        <pre><code>wsl --shutdown</code></pre>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; <span id="year"></span> WSL Guide by vinberg88</span>
+      <span class="footer-note">Daily usage · Dark mode ready</span>
+    </div>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </footer>
+</body>
+</html>

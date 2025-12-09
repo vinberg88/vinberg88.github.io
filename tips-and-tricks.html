@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WSL Guide – Tips &amp; tricks</title>
+  <meta name="description" content="Useful tips and tricks for getting the most out of WSL, including performance tuning and configuration." />
+
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="theme-toggle.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand-wrapper">
+        <div class="brand-logo">
+          <div class="logo-circle">
+            <span class="logo-g">G</span>
+          </div>
+          <div class="logo-text">
+            <span class="logo-main">God Mode</span>
+            <span class="logo-sub">WSL</span>
+          </div>
+        </div>
+
+        <div class="brand">
+          <span class="brand-title">WSL Guide</span>
+          <span class="brand-subtitle">Tips &amp; tricks</span>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Overview</a>
+        <a href="installation.html" class="nav-link">Installation</a>
+        <a href="daily-usage.html" class="nav-link">Daily usage</a>
+        <a href="tips-and-tricks.html" class="nav-link active">Tips &amp; tricks</a>
+        <a href="troubleshooting.html" class="nav-link">Troubleshooting</a>
+      </nav>
+
+      <div class="header-right">
+        <img
+          src="https://github.com/vinberg88.png"
+          alt="Profile picture of vinberg88"
+          class="avatar"
+          loading="lazy"
+        />
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          🌙
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="content">
+      <h1>Tips &amp; tricks for WSL</h1>
+      <p class="lede">
+        These tips help you optimize performance, keep your environment organized, and make WSL
+        feel more integrated with Windows.
+      </p>
+
+      <section>
+        <h2>Performance: prefer the Linux filesystem</h2>
+        <p>
+          For heavy development tasks (builds, large repositories, containers), store your code in
+          the Linux filesystem, for example:
+        </p>
+        <pre><code>/home/&lt;user&gt;/projects/my-app</code></pre>
+
+        <p>
+          Accessing many small files directly on <code>/mnt/c</code> can be slower under WSL 2.
+          Using the Linux filesystem gives better performance and fewer edge cases.
+        </p>
+      </section>
+
+      <section>
+        <h2>Use a custom default user</h2>
+        <p>
+          Some distributions let you set a default user instead of <code>root</code>. For example,
+          with Ubuntu you can run in PowerShell:
+        </p>
+        <pre><code>ubuntu config --default-user &lt;username&gt;</code></pre>
+      </section>
+
+      <section>
+        <h2>Use aliases and shell configuration</h2>
+        <p>
+          Just like on any Linux system, configure your shell to speed up common tasks. In
+          <code>~/.bashrc</code> or <code>~/.zshrc</code>:
+        </p>
+        <pre><code>alias ll='ls -la'
+alias gs='git status'
+alias ..='cd ..'
+alias cproj='cd ~/projects'</code></pre>
+      </section>
+
+      <section>
+        <h2>Sharing SSH keys</h2>
+        <p>
+          Instead of keeping separate SSH keys in WSL, you can:
+        </p>
+        <ul>
+          <li>Store keys in WSL under <code>~/.ssh</code> and configure Git to use them.</li>
+          <li>Or point WSL SSH to keys on your Windows drive (but be careful with permissions).</li>
+        </ul>
+
+        <p>
+          For Git, you can set your WSL-wide user configuration:
+        </p>
+        <pre><code>git config --global user.name "Your Name"
+git config --global user.email "you@example.com"</code></pre>
+      </section>
+
+      <section>
+        <h2>Environment variables and PATH</h2>
+        <p>
+          Windows adds some paths into WSL so you can run Windows executables. If you prefer a
+          cleaner environment, you can adjust your PATH in your shell configuration:
+        </p>
+        <pre><code># Example: move Windows paths to the end (bash)
+PATH="$PATH:/mnt/c/Windows:/mnt/c/Windows/System32"</code></pre>
+      </section>
+
+      <section>
+        <h2>Using Docker with WSL 2</h2>
+        <p>
+          Docker Desktop for Windows integrates with WSL 2. Recommended setup:
+        </p>
+        <ol>
+          <li>Install Docker Desktop on Windows.</li>
+          <li>Enable the WSL 2 backend in Docker settings.</li>
+          <li>Select which WSL distributions Docker can access.</li>
+        </ol>
+        <p>
+          Then you can run Docker commands directly inside your WSL terminal:
+        </p>
+        <pre><code>docker ps
+docker run hello-world</code></pre>
+      </section>
+
+      <section>
+        <h2>Useful commands to remember</h2>
+        <pre><code># List distributions
+wsl --list --verbose
+
+# Change default distribution
+wsl --set-default &lt;DistributionName&gt;
+
+# Change version (WSL 1 &lt;-&gt; WSL 2)
+wsl --set-version &lt;DistributionName&gt; 2
+
+# Export a distribution to a .tar file
+wsl --export &lt;DistributionName&gt; C:\backups\ubuntu-backup.tar
+
+# Import a distribution from a .tar file
+wsl --import &lt;NewName&gt; C:\wsl\custom C:\backups\ubuntu-backup.tar --version 2</code></pre>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; <span id="year"></span> WSL Guide by vinberg88</span>
+      <span class="footer-note">Tips &amp; tricks · Dark mode ready</span>
+    </div>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </footer>
+</body>
+</html>

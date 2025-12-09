@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WSL Guide – Troubleshooting</title>
+  <meta name="description" content="Troubleshooting common WSL issues and errors, and how to fix them." />
+
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="theme-toggle.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand-wrapper">
+        <div class="brand-logo">
+          <div class="logo-circle">
+            <span class="logo-g">G</span>
+          </div>
+          <div class="logo-text">
+            <span class="logo-main">God Mode</span>
+            <span class="logo-sub">WSL</span>
+          </div>
+        </div>
+
+        <div class="brand">
+          <span class="brand-title">WSL Guide</span>
+          <span class="brand-subtitle">Troubleshooting</span>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Overview</a>
+        <a href="installation.html" class="nav-link">Installation</a>
+        <a href="daily-usage.html" class="nav-link">Daily usage</a>
+        <a href="tips-and-tricks.html" class="nav-link">Tips &amp; tricks</a>
+        <a href="troubleshooting.html" class="nav-link active">Troubleshooting</a>
+      </nav>
+
+      <div class="header-right">
+        <img
+          src="https://github.com/vinberg88.png"
+          alt="Profile picture of vinberg88"
+          class="avatar"
+          loading="lazy"
+        />
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          🌙
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="content">
+      <h1>Troubleshooting WSL</h1>
+      <p class="lede">
+        WSL is usually stable, but sometimes installation or runtime issues appear. This page
+        covers common problems and how to solve them.
+      </p>
+
+      <section>
+        <h2>General diagnostics</h2>
+        <p>
+          When something is wrong, start by checking the overall WSL configuration:
+        </p>
+        <pre><code>wsl --status
+wsl --list --verbose</code></pre>
+
+        <p>
+          This shows which version (1 or 2) each distribution is using and whether system
+          components are installed correctly.
+        </p>
+      </section>
+
+      <section>
+        <h2>WSL fails to start</h2>
+        <p>
+          If WSL does not start at all, try:
+        </p>
+        <ol>
+          <li>Ensure that <strong>Virtualization</strong> is enabled in your BIOS/UEFI.</li>
+          <li>Confirm that “Windows Subsystem for Linux” and “Virtual Machine Platform” features are enabled.</li>
+          <li>Run <code>wsl --shutdown</code> and then try again.</li>
+          <li>Reboot Windows.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Networking issues</h2>
+        <p>
+          If WSL cannot reach the internet:
+        </p>
+        <ul>
+          <li>Check if regular Windows apps have internet access.</li>
+          <li>Restart WSL:
+            <pre><code>wsl --shutdown</code></pre>
+          </li>
+          <li>Try disabling and re-enabling your main network adapter.</li>
+          <li>If you use a VPN, temporarily disconnect it to see if it is blocking WSL traffic.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>“File system is slow” problems</h2>
+        <p>
+          If operations on your codebase feel very slow:
+        </p>
+        <ul>
+          <li>Move the repository from <code>/mnt/c/...</code> to the Linux filesystem (e.g. <code>/home/&lt;user&gt;/projects</code>).</li>
+          <li>Avoid scanning Windows drives with tools that read many small files repeatedly (like certain linters or search tools).</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Resetting a broken distribution</h2>
+        <p>
+          If a distribution is totally broken but you want to keep others, you can unregister it:
+        </p>
+        <pre><code>wsl --unregister &lt;DistributionName&gt;</code></pre>
+
+        <p class="note">
+          <strong>Warning:</strong> Unregistering deletes all data in that distribution.
+          Back up your important files before doing this.
+        </p>
+      </section>
+
+      <section>
+        <h2>Exporting and importing for backup</h2>
+        <p>
+          You can back up an entire distribution by exporting it to a <code>.tar</code> file:
+        </p>
+        <pre><code># Export
+wsl --export &lt;DistributionName&gt; C:\backups\my-distro.tar
+
+# Import as a new distribution
+wsl --import my-restored-distro C:\wsl\my-restored C:\backups\my-distro.tar --version 2</code></pre>
+      </section>
+
+      <section>
+        <h2>Logging and event viewer</h2>
+        <p>
+          For deeper debugging, check the Windows Event Viewer:
+        </p>
+        <ol>
+          <li>Press <kbd>Win</kbd> + <kbd>R</kbd>, type <code>eventvwr</code>, press Enter.</li>
+          <li>Under <strong>Windows Logs &gt; System</strong>, look for entries related to WSL, Hyper-V, or Virtualization.</li>
+        </ol>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; <span id="year"></span> WSL Guide by vinberg88</span>
+      <span class="footer-note">Troubleshooting · Dark mode ready</span>
+    </div>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </footer>
+</body>
+</html>

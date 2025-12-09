@@ -1,123 +1,166 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en" data-theme="dark">
 <head>
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PHS2787T');</script>
-<!-- End Google Tag Manager -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Välkommen till min sida om WSL - en sida hur man installera olika desktops via WSL och Windows 11</title>
-    <style>
-        /* Grundläggande CSS för att göra sidan lite snyggare */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh; /* Se till att sidan fyller hela skärmen vertikalt */
-        }
-        .container {
-            background: #fff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            max-width: 800px;
-            width: 90%;
-        }
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 20px;
-            font-size: 2.5em;
-        }
-        p {
-            font-size: 1.1em;
-            margin-bottom: 15px;
-        }
-        .button {
-            display: inline-block;
-            background-color: #007bff;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-        .button:hover {
-            background-color: #0056b3;
-        }
-        .footer {
-            margin-top: 30px;
-            font-size: 0.9em;
-            color: #777;
-        }
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WSL Guide – Overview</title>
+  <meta name="description" content="A practical guide to Windows Subsystem for Linux (WSL): what it is, why it matters, and how to use it effectively." />
+
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="theme-toggle.js"></script>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PHS2787T"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-    <div class="container">
-        <p><a href="https://github.com/vinberg88/opensuse/blob/main/Fedora42-KDE6.txt" class="button" target="_blank">Senaste projekt för WSl och Fedora 42</a></p>
-        <img src="https://lh3.googleusercontent.com/a/ACg8ocIsVLpogTErfcIeG65iS3MKzgtHCIuaxuo2Te9BmkBYPVci96qs=s288-c-no" alt="Matias Vinberg">
-        <h1>Hej och välkommen till min sida för WSL - Hur man installerar olika desktops via WSL och Windows 11 samt Linux</h1>
-        <p>Kort sagt, WSL är en revolutionerande funktion för alla som behöver kraften och flexibiliteten hos Linux, men vill fortsätta arbeta inom Windows-ekosystemet. Det ger en smidig och effektiv hybridmiljö som passar perfekt för modern programvaruutveckling och systemadministration. Huvudsyftet med WSL är att överbrygga klyftan mellan Windows och Linux för utvecklare. Många utvecklingsverktyg, ramverk och arbetsflöden är optimerade för Linux-miljöer. Tidigare var Windows-användare tvungna att förlita sig på virtuella maskiner (som VMware eller VirtualBox) eller dubbla uppstarter för att komma åt dessa verktyg, vilket ofta var tungrott och resurskrävande. WSL eliminerar dessa hinder genom att erbjuda en sömlös och lättviktig Linux-upplevelse direkt i Windows.</p>
-        <p>Jag är en passionerad utvecklare från Sverige som älskar att bygga responsiva och användarvänliga applikationer samt koda i php. Med erfarenhet i över 20 år så brinner jag för att lösa komplexa problem med elegant kod. När jag inte kodar gillar jag att koppla av på alla sätt.</p>
-        <p>Utforska gärna mina mina projekt om WSL via GitHub för att se mer av vad jag jobbar med inom olika desktops för WSL.</p>
-        <a href="https://github.com/vinberg88/opensuse" class="button" target="_blank">Besök mitt GitHub-projekt angående WSL</a>
-                <section id="skills">
-            <h2>Mina Färdigheter inom data</h2>
-            <ul class="skills-list">
-                <li><i class="fab fa-html5"></i> HTML5</li>
-                <li><i class="fab fa-css3-alt"></i> CSS3</li>
-                <li><i class="fab fa-js"></i> JavaScript</li>
-                <li><i class="fab fa-react"></i> React</li>
-                <li><i class="fab fa-node-js"></i> Node.js</li>
-                <li><i class="fab fa-php"></i> PHP</li>
-                <li><i class="fab fa-git-alt"></i> Git</li>
-                <li><i class="fab fa-php"></i> Java</li>
-                <li><i class="fab fa-git-alt"></i> Rust</li>
-                <li><i class="fab fa-git-alt"></i> firebase, go, Google Cloud, Gemini</li>
-                </ul>
-        </section>
-                <section id="contact">
-            <h2>Kontakta Mig</h2>
-            <p>Jag ser fram emot att höra från dig!</p>
-            <p>E-post: <a href="mailto:wsl@bramedia.org">Maila mig</a></p>
-            <div class="social-links">
-                <p>Social links!</p>
-                <a href="https://mattiasvinberg.bsky.social"target="_blank">Bluesky</a><i class="fab fa-linkedin fa-2x"></i></a>
-                <a href="https://www.facebook.com/mattiasvinberg"target="_blank">Facebook</a><i class="fab fa-twitter-square fa-2x"></i></a>
-                <a href="https://www.instagram.com/mattiasvinberg"target="_blank">Instagram</a><i class="fab fa-linkedin fa-2x"></i></a>
-                <a href="https://x.com/MattiasVinberg"target="_blank">X/Twitter</a><i class="fab fa-twitter-square fa-2x"></i></a>
-                <a href="https://www.linkedin.com/in/mattias-vinberg/"target="_blank">Linkedin</a><i class="fab fa-twitter-square fa-2x"></i></a>
-                <a href="https://mastodon.social/@mattiasvinberg"target="_blank">Mastodon</a><i class="fab fa-twitter-square fa-2x"></i></a>
-                <a href="https://www.youtube.com/@mattiasvinberg"target="_blank">Youtube</a><i class="fab fa-twitter-square fa-2x"></i></a>
-                <a href="https://www.tumblr.com/mattiasvinberg"target="_blank">Tumblr</a><i class="fab fa-twitter-square fa-2x"></i></a>
-            </div>
-        </section>
-        <div class="footer">
-            <p>&copy; 2025 Vinberg88 - Mattias Vinberg - https://vinberg88.github.io - All Rights Reserved for GitHub</p>
-            <p>Denna sida är byggd med ❤️ och kod av Mattias Vinberg - 2025 - Sweden</p>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand-wrapper">
+        <div class="brand-logo">
+          <div class="logo-circle">
+            <span class="logo-g">G</span>
+          </div>
+          <div class="logo-text">
+            <span class="logo-main">God Mode</span>
+            <span class="logo-sub">WSL</span>
+          </div>
         </div>
+
+        <div class="brand">
+          <span class="brand-title">WSL Guide</span>
+          <span class="brand-subtitle">Windows Subsystem for Linux</span>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html" class="nav-link active">Overview</a>
+        <a href="installation.html" class="nav-link">Installation</a>
+        <a href="daily-usage.html" class="nav-link">Daily usage</a>
+        <a href="tips-and-tricks.html" class="nav-link">Tips &amp; tricks</a>
+        <a href="troubleshooting.html" class="nav-link">Troubleshooting</a>
+      </nav>
+
+      <div class="header-right">
+        <img
+          src="https://github.com/vinberg88.png"
+          alt="Profile picture of vinberg88"
+          class="avatar"
+          loading="lazy"
+        />
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          🌙
+        </button>
+      </div>
     </div>
+  </header>
+
+  <main class="container">
+    <article class="content">
+      <h1>Windows Subsystem for Linux (WSL)</h1>
+      <p class="lede">
+        Windows Subsystem for Linux (WSL) lets you run a real Linux environment directly on Windows,
+        without a virtual machine and without dual-booting. It is ideal for developers who want the
+        power of Linux tools together with their existing Windows workflow.
+      </p>
+
+      <section>
+        <h2>What is WSL?</h2>
+        <p>
+          WSL is a compatibility layer in Windows that allows you to run Linux user-space binaries
+          natively. Instead of emulating or virtualizing an entire Linux system, WSL integrates Linux
+          with Windows so you can:
+        </p>
+        <ul>
+          <li>Install popular Linux distributions – such as Ubuntu, Debian, and Fedora – from the Microsoft Store.</li>
+          <li>Use Linux command-line tools (e.g. <code>bash</code>, <code>ssh</code>, <code>git</code>, <code>grep</code>, <code>sed</code>).</li>
+          <li>Access your Windows files from Linux and vice versa.</li>
+          <li>Combine Windows applications (like VS Code) with Linux tooling in one workflow.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>WSL 1 vs WSL 2</h2>
+        <p>
+          There are two major WSL versions, each with its own architecture and use-cases:
+        </p>
+
+        <h3>WSL 1</h3>
+        <ul>
+          <li>Translates Linux system calls into Windows system calls.</li>
+          <li>Very fast file access when working mainly in the Windows filesystem (e.g. <code>C:\</code>).</li>
+          <li>Good compatibility for many CLI tools, but not full Linux kernel functionality.</li>
+        </ul>
+
+        <h3>WSL 2</h3>
+        <ul>
+          <li>Runs an actual Linux kernel in a lightweight virtual machine managed by Windows.</li>
+          <li>Much better compatibility with Linux applications, Docker, networking tools, etc.</li>
+          <li>Better performance for Linux-heavy workloads, especially when working within the Linux filesystem.</li>
+        </ul>
+
+        <p>
+          For most modern use-cases, especially development with Docker or more advanced tools,
+          <strong>WSL 2 is recommended</strong>. You can still switch individual distributions
+          between WSL 1 and WSL 2 depending on your needs.
+        </p>
+      </section>
+
+      <section>
+        <h2>Why use WSL?</h2>
+        <p>
+          WSL is especially useful if you:
+        </p>
+        <ul>
+          <li>Develop software that runs on Linux (web apps, backend services, scripts, etc.).</li>
+          <li>Need access to package managers like <code>apt</code>, <code>dnf</code>, or <code>pacman</code>.</li>
+          <li>Want to use Linux-only tools while staying in Windows.</li>
+          <li>Prefer working in a terminal-based environment without leaving Windows.</li>
+        </ul>
+
+        <p>
+          Combined with editors like Visual Studio Code or JetBrains IDEs, WSL gives you a powerful
+          development setup where the code runs in Linux, but the UI runs on Windows.
+        </p>
+      </section>
+
+      <section>
+        <h2>High-level architecture</h2>
+        <p>
+          At a high level, WSL looks like this:
+        </p>
+        <ol>
+          <li>Windows manages one or more Linux distributions installed from the Microsoft Store or manually.</li>
+          <li>Each distribution has its own filesystem, configuration, and tools.</li>
+          <li>Windows provides integration layers for:
+            <ul>
+              <li>Filesystem access (e.g. <code>/mnt/c</code> for the Windows <code>C:</code> drive).</li>
+              <li>Networking (WSL instances get IP addresses and can reach the internet and Windows).</li>
+              <li>Interop between Windows and Linux commands (e.g. launching <code>notepad.exe</code> from Linux).</li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Getting started</h2>
+        <p>
+          If you are new to WSL, follow these sections in order:
+        </p>
+        <ol>
+          <li><a href="installation.html">Installation</a> – enable WSL, choose WSL 2, and install a Linux distribution.</li>
+          <li><a href="daily-usage.html">Daily usage</a> – basic commands, working with files, editors, and networking.</li>
+          <li><a href="tips-and-tricks.html">Tips &amp; tricks</a> – performance tuning, configuration, and shortcuts.</li>
+          <li><a href="troubleshooting.html">Troubleshooting</a> – common issues and how to fix them.</li>
+        </ol>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; <span id="year"></span> WSL Guide by vinberg88</span>
+      <span class="footer-note">Built for GitHub Pages · Dark mode ready</span>
+    </div>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </footer>
 </body>
 </html>
