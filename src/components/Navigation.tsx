@@ -31,7 +31,7 @@ const navigation: NavigationItem[] = [
         <path d="M3.5 10.1 12 4l8.5 6.1" />
         <path d="M6 10.75v7.75A1.5 1.5 0 0 0 7.5 20h3.1v-4.5h2.8V20h3.1a1.5 1.5 0 0 0 1.5-1.5V10.75" />
       </svg>
-    )
+    ),
   },
   {
     name: 'WSL Deep Dive',
@@ -51,7 +51,7 @@ const navigation: NavigationItem[] = [
         <path d="M7.5 10.5 10.5 13l-3 2.5" />
         <path d="M12.75 15.75h3.75" />
       </svg>
-    )
+    ),
   },
   {
     name: 'Installation',
@@ -71,7 +71,7 @@ const navigation: NavigationItem[] = [
         <path d="M9.25 11 12 13.75 14.75 11" />
         <path d="M6 18.5h12" />
       </svg>
-    )
+    ),
   },
   {
     name: 'Configuration',
@@ -94,7 +94,7 @@ const navigation: NavigationItem[] = [
         <circle cx={8.5} cy={12} r={1.6} />
         <circle cx={14} cy={17} r={1.6} />
       </svg>
-    )
+    ),
   },
   {
     name: 'Development',
@@ -114,7 +114,7 @@ const navigation: NavigationItem[] = [
         <path d="M15.5 8.5 18.5 12l-3 3.5" />
         <path d="M12 7l-1.5 10" />
       </svg>
-    )
+    ),
   },
   {
     name: 'Troubleshooting',
@@ -138,7 +138,7 @@ const navigation: NavigationItem[] = [
         <path d="M8.3 15.7 6.9 17.1" />
         <path d="M15.7 15.7 17.1 17.1" />
       </svg>
-    )
+    ),
   },
   {
     name: 'Best Practices',
@@ -157,7 +157,7 @@ const navigation: NavigationItem[] = [
         <path d="M9 4.5 10.5 8l3.5.5-2.5 2.5.6 3.5L9 12.5l-3.1 2 .6-3.5L4 8.5l3.5-.5z" />
         <path d="M16.75 9.25 18 10.5 20.25 9.75 19.5 12 20.75 13.25 18.5 13.5 17.75 15.75 16.5 14.5 14.25 15.25 15 13 13.75 11.75 16 11.5z" />
       </svg>
-    )
+    ),
   },
   {
     name: 'WSL Enterprise Playbook',
@@ -178,7 +178,7 @@ const navigation: NavigationItem[] = [
         <path d="M9.75 13.5h4.5" />
         <path d="M9.75 16.5h4.5" />
       </svg>
-    )
+    ),
   },
   {
     name: 'Tools & Apps',
@@ -196,7 +196,7 @@ const navigation: NavigationItem[] = [
       >
         <path d="M12.25 4.75a3.5 3.5 0 0 1 3.5 3.5l-1.5 1.5 4.25 4.25a2 2 0 0 1-2.83 2.83L11.42 12.6l-1.5 1.5a3.5 3.5 0 1 1-4.95-4.95l3.9-3.9" />
       </svg>
-    )
+    ),
   },
   {
     name: 'Resources',
@@ -216,7 +216,7 @@ const navigation: NavigationItem[] = [
         <path d="M6.5 6.5A3 3 0 0 1 9.5 4" />
         <path d="M6.5 18.5H17.5" />
       </svg>
-    )
+    ),
   },
   {
     name: 'Contact',
@@ -235,7 +235,7 @@ const navigation: NavigationItem[] = [
         <rect x={4.5} y={6.5} width={15} height={11} rx={2} />
         <path d="m5.5 8.75 6.5 4.25 6.5-4.25" />
       </svg>
-    )
+    ),
   }
 ]
 
