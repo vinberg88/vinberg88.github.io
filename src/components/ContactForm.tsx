@@ -11,6 +11,26 @@ interface FormData {
 
 type SubmitStatus = 'success' | 'error' | null
 
+const parseResponseBody = async (response: Response): Promise<unknown> => {
+  const contentType = response.headers.get('content-type')
+
+  if (contentType?.toLowerCase().includes('application/json')) {
+    try {
+      return await response.json()
+    } catch (error) {
+      console.warn('Failed to parse JSON response', error)
+      return null
+    }
+  }
+
+  try {
+    return await response.text()
+  } catch (error) {
+    console.warn('Failed to read response as text', error)
+    return null
+  }
+}
+
 export default function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -20,6 +40,8 @@ export default function ContactForm() {
   })
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>(null)
+  const [errorDetails, setErrorDetails] = useState<string | null>(null)
+  const [successDetails, setSuccessDetails] = useState<string | null>(null)
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -32,27 +54,84 @@ export default function ContactForm() {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus(null)
+    setErrorDetails(null)
+    setSuccessDetails(null)
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
+      const endpoints: string[] = []
+      const configuredEndpoint = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT?.trim()
+
+      if (configuredEndpoint) {
+        endpoints.push(configuredEndpoint)
+      }
+
+      if (!endpoints.includes('/api/contact')) {
+        endpoints.push('/api/contact')
+      }
+
+      let lastErrorMessage = ''
+
+      for (const endpoint of endpoints) {
+        const isExternal = endpoint.startsWith('http')
+        const headers: HeadersInit = {
           'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
+        }
+
+        if (isExternal) {
+          headers['Accept'] = 'application/json'
+        }
+
+        const payload = {
           ...formData,
           userAgent: navigator.userAgent,
-        }),
-      })
+          _subject: `WSL Guide Contact: ${formData.subject}`,
+          _replyto: formData.email,
+          _template: 'table',
+        }
 
-      if (response.ok) {
-        setSubmitStatus('success')
-        setFormData({ name: '', email: '', subject: '', message: '' })
-      } else {
-        setSubmitStatus('error')
+        try {
+          const response = await fetch(endpoint, {
+            method: 'POST',
+            headers,
+            body: JSON.stringify(payload),
+          })
+
+          if (response.ok) {
+            const responseBody = await parseResponseBody(response)
+            const successMessage =
+              (typeof responseBody === 'object' && responseBody !== null && 'message' in responseBody
+                ? String((responseBody as Record<string, unknown>).message)
+                : typeof responseBody === 'string' && responseBody.trim().length > 0
+                  ? responseBody
+                  : null) ?? 'Message sent successfully!'
+
+            setSubmitStatus('success')
+            setSuccessDetails(successMessage)
+            setFormData({ name: '', email: '', subject: '', message: '' })
+            return
+          }
+
+          const responseBody = await parseResponseBody(response)
+          const errorMessage =
+            (typeof responseBody === 'object' && responseBody !== null && 'error' in responseBody
+              ? String((responseBody as Record<string, unknown>).error)
+              : typeof responseBody === 'object' && responseBody !== null && 'message' in responseBody
+                ? String((responseBody as Record<string, unknown>).message)
+                : typeof responseBody === 'string' && responseBody.trim().length > 0
+                  ? responseBody
+                  : `${response.status} ${response.statusText}`)
+
+          lastErrorMessage = errorMessage
+        } catch (error) {
+          lastErrorMessage = error instanceof Error ? error.message : 'Unknown error during submission'
+        }
       }
+
+      setErrorDetails(lastErrorMessage || 'Unable to send your message right now. Please try again later.')
+      setSubmitStatus('error')
     } catch (error) {
       console.error('Error submitting form:', error)
+      setErrorDetails(error instanceof Error ? error.message : 'Unknown error during submission')
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)
@@ -75,7 +154,7 @@ export default function ContactForm() {
               <div className="ml-3">
                 <h3 className="text-sm font-medium text-green-800 dark:text-green-200">Message sent successfully!</h3>
                 <div className="mt-2 text-sm text-green-700 dark:text-green-200/80">
-                  <p>Thank you for your message. We'll get back to you soon!</p>
+                  <p>{successDetails ?? "Thank you for your message. We'll get back to you soon!"}</p>
                 </div>
               </div>
             </div>
@@ -94,6 +173,7 @@ export default function ContactForm() {
                 <h3 className="text-sm font-medium text-red-800 dark:text-red-200">Error sending message</h3>
                 <div className="mt-2 text-sm text-red-700 dark:text-red-200/80">
                   <p>There was a problem sending your message. Please try again or contact us directly.</p>
+                  {errorDetails && <p className="mt-2 text-xs text-red-600 dark:text-red-300/80">Details: {errorDetails}</p>}
                 </div>
               </div>
             </div>
