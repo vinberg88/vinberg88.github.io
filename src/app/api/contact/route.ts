@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
+import SMTPTransport from 'nodemailer/lib/smtp-transport'
 
 // Configure nodemailer transporter
 const createTransporter = async () => {
@@ -7,7 +8,7 @@ const createTransporter = async () => {
   const secure = process.env.SMTP_SECURE === 'true' || port === 465
 
   if (process.env.NODE_ENV === 'production') {
-    return nodemailer.createTransport({
+    const smtpOptions: SMTPTransport.Options = {
       host: process.env.SMTP_HOST || 'smtp.gmail.com',
       port,
       secure,
@@ -15,13 +16,14 @@ const createTransporter = async () => {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
-      pool: process.env.SMTP_POOL === 'true' || false,
-    })
+    }
+
+    return nodemailer.createTransport(smtpOptions)
   }
 
   const testAccount = await nodemailer.createTestAccount()
 
-  return nodemailer.createTransport({
+  const devOptions: SMTPTransport.Options = {
     host: testAccount.smtp.host,
     port: testAccount.smtp.port,
     secure: testAccount.smtp.secure,
@@ -29,7 +31,9 @@ const createTransporter = async () => {
       user: testAccount.user,
       pass: testAccount.pass,
     },
-  })
+  }
+
+  return nodemailer.createTransport(devOptions)
 }
 
 export async function POST(request: NextRequest) {

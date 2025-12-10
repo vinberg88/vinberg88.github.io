@@ -1,43 +1,30 @@
 # AI coding agent guide for vinberg88.github.io
 
-This repo is a Next.js 15, TypeScript WSL guide site exported statically for GitHub Pages. The app router is used; content is composed from React components (no MDX). Legacy HTML files in the repo root are kept for history and should not be modified.
+## Architecture snapshot
+- Next.js 15 App Router (TypeScript + Tailwind); `next.config.js` enforces `output: 'export'`, `trailingSlash: true`, and `images.unoptimized`. `npm run build` writes static HTML to `out/` for GitHub Pages—never edit the legacy `*.html` files in the repo root.
+- `src/app/layout.tsx` wraps every route with `ThemeProvider`, `Navigation`, and `Footer`, plus an inline `<script>` that reads `localStorage` (`wsl-guide-theme`) before hydration. Keep that snippet intact to prevent theme flicker.
+- `src/app/page.tsx` re-exports `NodePage`; change the hero copy in both files if you ever diverge.
 
-## Architecture in one glance
-- Next.js App Router under `src/app/*` with top-level layout in `src/app/layout.tsx` and global styles in `src/app/globals.css`.
-- Route pages live at `src/app/[route]/page.tsx` (e.g., `installation`, `configuration`, `development`, `resources`, `tools`, `troubleshooting`, `best-practices`, `contact`). Pages are thin and composed from `src/components/*`.
-- Navigation is defined in `src/components/Navigation.tsx` with active state via `usePathname()`.
-- Styling is Tailwind-based with a small design system: terminal-themed classes and WSL colors.
-- A Nodemailer API route powers the contact form: `src/app/api/contact/route.ts` used by `src/components/ContactForm.tsx`.
-- Legacy static site files remain at the project root (`index.html`, `installation.html`, etc.) — do not edit; the Next.js app is the source of truth.
+## Page patterns
+- Each route lives in `src/app/<segment>/page.tsx` and assembles content from arrays declared in the same file (see `managers` and `tooling` in `/node`). Extend sections by appending to those arrays instead of duplicating JSX.
+- Update the single navigation source at `src/components/Navigation.tsx` when adding pages; links should carry the trailing slash (`/tools/`) so static export emits matching folders.
+- Use `<Link>` from `next/link` for internal paths and give external resources `target="_blank"` + `rel="noopener noreferrer"`, mirroring existing pages.
 
-## Build, run, and deploy
-- Key scripts (package.json):
-  - `npm run dev` — start Next.js dev server on port 3000
-  - `npm run build` — static export to `./out` (Next `output: 'export'`, `trailingSlash: true`)
-  - `npm run lint` — run ESLint
-- Static export details (`next.config.js`): `output: 'export'`, `images: { unoptimized: true }`, `trailingSlash: true`. Output is in `out/` for GitHub Pages.
-- CI/CD: GitHub Actions deploys `out/` to Pages (see `.github/workflows/deploy.yml` if present). No basePath; site is served from repo root.
+## Styling & theming
+- Tailwind lives in `tailwind.config.js` with WSL brand colors and `darkMode: 'class'`. Global utility classes (`.card`, `.terminal-window`, `.btn-primary`, `.nav-link`) reside in `src/app/globals.css`; reuse them for consistent styling.
+- Client components that read theme state must stay inside `ThemeProvider`. `ThemeToggle` cycles Light ➜ Dark ➜ System and persists to `localStorage`; don’t remove the `use client` directives on these components.
 
-## Patterns and conventions
-- Pages: keep minimal; compose from components like `Hero`, `Features`, `QuickStart`, `TechStack`, `Community`, `Footer`.
-- Terminal look and feel: use classes from `globals.css` — `.terminal-window`, `.terminal-header`, `.terminal-content`.
-- Design tokens (Tailwind): WSL colors `wsl-blue #0078d4`, `wsl-green #107c10`, `ubuntu-orange #e95420`, plus `terminal-bg #0c0c0c`, `terminal-text #cccccc`. Typography plugin is enabled.
-- Navigation additions: update the array in `Navigation.tsx`; active link style is `.nav-link.active`.
-- Forms and email: `ContactForm.tsx` posts to the API route; in dev it uses Ethereal mail. In production, set `SMTP_HOST`, `SMTP_USER`, `SMTP_PASS` env vars.
+## Contact and email tooling
+- `src/components/ContactForm.tsx` posts JSON to `/api/contact`; the handler in `src/app/api/contact/route.ts` sends an admin mail plus an auto-reply via Nodemailer. Preserve the response contract `{ message, messageId }` / `{ error }` because the UI keyes off it.
+- Production email requires `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`, `SMTP_USER`, `SMTP_PASS`, `FROM_EMAIL`, and `TO_EMAIL`. In development the handler provisions an Ethereal test account automatically.
+- `scripts/mail.js` offers a CLI (`node scripts/mail.js test` / `send-contact ...`) that shares the transporter and reads `.env.local`; use it to debug SMTP configuration without going through the UI.
 
-## Integration specifics
-- API route: `src/app/api/contact/route.ts` (Next.js app router). Ensure body parsing and error handling match Nodemailer expectations; keep the response structure stable for `ContactForm.tsx`.
-- Images: use Next Image with `unoptimized: true` in static export or plain `<img>` when simpler. Avoid remote loader changes.
-- Dark/theme: `ThemeProvider.tsx` + `ThemeToggle.tsx` manage theme state; respect existing classes and avoid breaking tailwind purging.
+## Build & quality checkpoints
+- Local dev: `npm run dev` (Next.js on port 3000).
+- Static export: `npm run build`, then deploy the generated `out/` folder; rerun after structural changes to verify every route exports.
+- Linting: `npm run lint`. There are no automated tests, so rely on lint + manual verification.
 
-## Don’ts and edge cases
-- Do not edit legacy root HTML files (`index.html`, `installation.html`, etc.); they are snapshots.
-- Keep routes under `src/app/*` and avoid adding MDX or server-side only features incompatible with static export.
-- When adding new routes, ensure link inclusion in `Navigation.tsx` and verify `trailingSlash` behavior for static export.
-
-## Example: adding a new guide page
-1) Create `src/app/daily-usage/page.tsx` and compose from components.
-2) Add nav entry in `Navigation.tsx`.
-3) Run `npm run build` and confirm page exported under `out/daily-usage/`.
-
-Questions or gaps? If any workflow or config feels ambiguous (SMTP, CI deploy file, image handling), flag it here and propose a concrete update.
+## Guardrails
+- Remote imagery depends on `images.unoptimized`; host new assets under `public/` or external URLs.
+- Avoid runtime-only Next.js features (server `fetch`, streaming, dynamic routes) or the export step will fail.
+- Commit new scripts/config under `scripts/` or `docs/` and leave the historic HTML snapshots untouched.
