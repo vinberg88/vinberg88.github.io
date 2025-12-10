@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function DevelopmentPage() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -101,6 +103,11 @@ export default function DevelopmentPage() {
               {/* Node.js */}
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Node.js & npm</h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-4">
+                  Use a version manager to keep Node.js installations lightweight and isolated per project. Our
+                  dedicated <Link href="/node/" className="text-blue-600 hover:underline">Node.js on WSL guide</Link>
+                  walks through nvm, fnm, and asdf in detail.
+                </p>
                 <div className="terminal-window mb-4">
                   <div className="terminal-header">
                     <div className="terminal-dot bg-red-500"></div>
@@ -109,10 +116,10 @@ export default function DevelopmentPage() {
                   </div>
                   <div className="terminal-content">
                     <div className="space-y-1 text-sm">
-                      <div><span className="text-wsl-green">$</span> <span className="text-white">curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -</span></div>
-                      <div><span className="text-wsl-green">$</span> <span className="text-white">sudo apt-get install -y nodejs</span></div>
-                      <div><span className="text-wsl-green">$</span> <span className="text-white">node --version</span></div>
-                      <div><span className="text-wsl-green">$</span> <span className="text-white">npm --version</span></div>
+                      <div><span className="text-wsl-green">$</span> <span className="text-white">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash</span></div>
+                      <div><span className="text-wsl-green">$</span> <span className="text-white">source ~/.nvm/nvm.sh</span></div>
+                      <div><span className="text-wsl-green">$</span> <span className="text-white">nvm install --lts</span></div>
+                      <div><span className="text-wsl-green">$</span> <span className="text-white">node --version && npm --version</span></div>
                     </div>
                   </div>
                 </div>

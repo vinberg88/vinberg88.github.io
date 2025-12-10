@@ -19,9 +19,17 @@ export default function QuickStart() {
     {
       number: '3',
       title: 'Install Tools',
-      description: 'Install your favorite development tools and languages',
-      command: 'sudo apt install git nodejs npm python3 pip',
-      details: 'Get your development environment ready with essential tools.'
+      description: 'Install Git, build essentials, and prepare to add languages',
+      command: 'sudo apt install git build-essential curl',
+      details: (
+        <>
+          Then install Node.js with a version manager—visit the{' '}
+          <Link href="/node/" className="text-blue-600 dark:text-blue-300 hover:underline">
+            Node.js on WSL guide
+          </Link>{' '}
+          for step-by-step commands.
+        </>
+      )
     },
     {
       number: '4',
