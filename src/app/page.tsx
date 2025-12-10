@@ -369,15 +369,31 @@ export default function HomePage() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-8 flex flex-wrap items-center gap-4">
+              <div className="mt-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-6">
                 <a
                   href="https://github.com/vinberg88/opensuse"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold tracking-wide uppercase backdrop-blur transition hover:border-emerald-200 hover:bg-emerald-400/20 hover:text-emerald-50"
+                  className="group relative flex w-full max-w-xl items-center gap-5 rounded-2xl border border-white/25 bg-white/10 px-5 py-4 backdrop-blur transition hover:border-emerald-200/70 hover:bg-emerald-400/15"
                 >
-                  <span className="h-2 w-2 rounded-full bg-emerald-300" />
-                  WSL - Desktop for All
+                  <div className="relative h-16 w-28 overflow-hidden rounded-xl border border-white/20 bg-slate-900/60">
+                    <Image
+                      src="/opensuse-desktop.png"
+                      alt="openSUSE-desktop i WSL"
+                      fill
+                      sizes="(min-width: 768px) 112px, 112px"
+                      className="object-cover transition duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs uppercase tracking-[0.22em] text-emerald-200/80">WSL - Desktop for All</p>
+                    <p className="mt-1 text-sm text-slate-100/85">
+                      Utforska openSUSE-inspirerade skrivbord för en komplett WSL-upplevelse på Windows.
+                    </p>
+                  </div>
+                  <svg className="h-4 w-4 shrink-0 text-emerald-200 transition group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
                 </a>
                 <p className="text-xs text-slate-100/70">
                   Följ projektet på GitHub och bidra med dina egna desktop-idéer.
