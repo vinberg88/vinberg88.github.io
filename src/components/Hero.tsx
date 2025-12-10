@@ -1,4 +1,7 @@
+import Image from 'next/image'
 import Link from 'next/link'
+
+import SocialLinks from './SocialLinks'
 
 export default function Hero() {
   return (
@@ -16,19 +19,27 @@ export default function Hero() {
               Latest Project For WSL - FEDORA 42 and KDE 6
             </Link>
           </div>
-          <img
-            src="https://lh3.googleusercontent.com/a/ACg8ocIsVLpogTErfcIeG65iS3MKzgtHCIuaxuo2Te9BmkBYPVci96qs=s288-c-no"
-            alt="Matias Vinberg"
-            style={{ display: "block", margin: "1rem auto" }}
-          />
+          <div className="flex justify-center mt-8">
+            <Image
+              src="https://lh3.googleusercontent.com/a/ACg8ocIsVLpogTErfcIeG65iS3MKzgtHCIuaxuo2Te9BmkBYPVci96qs=s288-c-no"
+              alt="Portrait of Mattias Vinberg"
+              width={144}
+              height={144}
+              className="rounded-full shadow-lg"
+              priority
+              unoptimized
+            />
+          </div>
+          <div className="mt-8 text-blue-50">
+            Your guide to WSL – from installation to advanced development workflows. Learn how to seamlessly integrate
+            Linux tools with Windows development.
+          </div>
+          <div className="mt-8 flex justify-center">
+            <SocialLinks appearance="light" variant="minimal" />
+          </div>
         </div>
         {/* Moved closing div above to fix JSX structure */}
-        <div>
-          Your guide to WSL - from installation to advanced development workflows. 
-          Learn how to seamlessly integrate Linux tools with Windows development.
-        </div>
-        <br />
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
           <Link
             href="/installation"
             className="bg-white text-wsl-blue px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 text-lg"

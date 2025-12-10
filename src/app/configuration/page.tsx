@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function ConfigurationPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-green-600 to-blue-600 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -21,10 +21,10 @@ export default function ConfigurationPage() {
           
           {/* WSL Configuration File */}
           <div className="card mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">WSL Configuration (.wslconfig)</h2>
-            <p className="text-gray-700 mb-6">
-              Create a <code className="bg-gray-100 px-2 py-1 rounded">.wslconfig</code> file in your Windows user directory 
-              (<code className="bg-gray-100 px-2 py-1 rounded">C:\Users\&lt;username&gt;\.wslconfig</code>) to configure global WSL settings.
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">WSL Configuration (.wslconfig)</h2>
+            <p className="text-gray-700 dark:text-gray-300 mb-6">
+              Create a <code className="bg-gray-100 dark:bg-gray-800 dark:text-gray-100 px-2 py-1 rounded">.wslconfig</code> file in your Windows user directory 
+              (<code className="bg-gray-100 dark:bg-gray-800 dark:text-gray-100 px-2 py-1 rounded">C:\Users\&lt;username&gt;\.wslconfig</code>) to configure global WSL settings.
             </p>
             
             <div className="terminal-window mb-6">
@@ -50,7 +50,7 @@ export default function ConfigurationPage() {
               </div>
             </div>
             
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div className="bg-blue-50 border-l-4 border-blue-400 dark:bg-blue-900/30 dark:border-blue-500/70 p-4">
               <div className="flex">
                 <div className="flex-shrink-0">
                   <svg className="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
@@ -58,9 +58,9 @@ export default function ConfigurationPage() {
                   </svg>
                 </div>
                 <div className="ml-3">
-                  <p className="text-sm text-blue-700">
+                  <p className="text-sm text-blue-700 dark:text-blue-200">
                     <strong>Note:</strong> After creating or modifying <code>.wslconfig</code>, restart WSL with 
-                    <code className="bg-blue-100 px-1 py-0.5 rounded mx-1">wsl --shutdown</code> for changes to take effect.
+                    <code className="bg-blue-100 dark:bg-blue-900/40 dark:text-blue-100 px-1 py-0.5 rounded mx-1">wsl --shutdown</code> for changes to take effect.
                   </p>
                 </div>
               </div>
@@ -69,9 +69,9 @@ export default function ConfigurationPage() {
 
           {/* Distribution-specific Configuration */}
           <div className="card mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Distribution Configuration (wsl.conf)</h2>
-            <p className="text-gray-700 mb-6">
-              Create a <code className="bg-gray-100 px-2 py-1 rounded">/etc/wsl.conf</code> file inside your Linux distribution 
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Distribution Configuration (wsl.conf)</h2>
+            <p className="text-gray-700 dark:text-gray-300 mb-6">
+              Create a <code className="bg-gray-100 dark:bg-gray-800 dark:text-gray-100 px-2 py-1 rounded">/etc/wsl.conf</code> file inside your Linux distribution 
               to configure distribution-specific settings.
             </p>
             
@@ -108,35 +108,35 @@ export default function ConfigurationPage() {
               </div>
             </div>
             
-            <p className="text-gray-700">
-              To create this file, run: <code className="bg-gray-100 px-2 py-1 rounded">sudo nano /etc/wsl.conf</code>
+            <p className="text-gray-700 dark:text-gray-300">
+              To create this file, run: <code className="bg-gray-100 dark:bg-gray-800 dark:text-gray-100 px-2 py-1 rounded">sudo nano /etc/wsl.conf</code>
             </p>
           </div>
 
           {/* Performance Optimization */}
           <div className="card mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Performance Optimization</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Performance Optimization</h2>
             
             <div className="space-y-8">
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">File System Performance</h3>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">File System Performance</h3>
                 <div className="space-y-4">
-                  <div className="bg-green-50 border-l-4 border-green-400 p-4">
-                    <h4 className="font-semibold text-green-800 mb-2">✅ DO: Store Linux files in WSL file system</h4>
-                    <p className="text-green-700 text-sm mb-2">
+                  <div className="bg-green-50 border-l-4 border-green-400 dark:bg-green-900/30 dark:border-green-500/70 p-4">
+                    <h4 className="font-semibold text-green-800 dark:text-green-200 mb-2">✅ DO: Store Linux files in WSL file system</h4>
+                    <p className="text-green-700 dark:text-green-200 text-sm mb-2">
                       Keep your project files in the Linux file system for best performance:
                     </p>
-                    <code className="bg-green-100 text-green-800 px-2 py-1 rounded text-sm">
+                    <code className="bg-green-100 dark:bg-green-900/40 text-green-800 dark:text-green-200 px-2 py-1 rounded text-sm">
                       /home/username/projects/my-app
                     </code>
                   </div>
                   
-                  <div className="bg-red-50 border-l-4 border-red-400 p-4">
-                    <h4 className="font-semibold text-red-800 mb-2">❌ AVOID: Cross-file-system operations</h4>
-                    <p className="text-red-700 text-sm mb-2">
+                  <div className="bg-red-50 border-l-4 border-red-400 dark:bg-red-900/30 dark:border-red-500/70 p-4">
+                    <h4 className="font-semibold text-red-800 dark:text-red-200 mb-2">❌ AVOID: Cross-file-system operations</h4>
+                    <p className="text-red-700 dark:text-red-200 text-sm mb-2">
                       Avoid running Linux tools on Windows files (slower performance):
                     </p>
-                    <code className="bg-red-100 text-red-800 px-2 py-1 rounded text-sm">
+                    <code className="bg-red-100 dark:bg-red-900/40 text-red-800 dark:text-red-200 px-2 py-1 rounded text-sm">
                       /mnt/c/Users/username/Desktop/my-app
                     </code>
                   </div>
@@ -144,8 +144,8 @@ export default function ConfigurationPage() {
               </div>
               
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Memory Management</h3>
-                <p className="text-gray-700 mb-4">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Memory Management</h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-4">
                   WSL 2 uses a dynamic memory allocation. You can limit memory usage and reclaim unused memory:
                 </p>
                 
@@ -173,7 +173,7 @@ export default function ConfigurationPage() {
               </div>
               
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Disk Space Management</h3>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Disk Space Management</h3>
                 <p className="text-gray-700 mb-4">
                   WSL disk images can grow large over time. Here's how to compact them:
                 </p>
@@ -209,11 +209,11 @@ export default function ConfigurationPage() {
 
           {/* Networking Configuration */}
           <div className="card mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Networking Configuration</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Networking Configuration</h2>
             
             <div className="space-y-6">
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Port Forwarding</h3>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Port Forwarding</h3>
                 <p className="text-gray-700 mb-4">
                   Access services running in WSL from Windows or external networks:
                 </p>
@@ -243,7 +243,7 @@ export default function ConfigurationPage() {
               </div>
               
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">DNS Configuration</h3>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">DNS Configuration</h3>
                 <p className="text-gray-700 mb-4">
                   If you're experiencing DNS issues, you can configure custom DNS servers:
                 </p>
@@ -275,11 +275,11 @@ export default function ConfigurationPage() {
 
           {/* Shell Configuration */}
           <div className="card mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Shell Configuration</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Shell Configuration</h2>
             
             <div className="space-y-6">
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Install Zsh and Oh My Zsh</h3>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Install Zsh and Oh My Zsh</h3>
                 <p className="text-gray-700 mb-4">
                   Enhance your shell experience with Zsh and Oh My Zsh:
                 </p>
@@ -311,7 +311,7 @@ export default function ConfigurationPage() {
               </div>
               
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Useful Aliases</h3>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Useful Aliases</h3>
                 <p className="text-gray-700 mb-4">
                   Add these aliases to your <code className="bg-gray-100 px-2 py-1 rounded">~/.bashrc</code> or 
                   <code className="bg-gray-100 px-2 py-1 rounded">~/.zshrc</code>:
@@ -345,30 +345,29 @@ export default function ConfigurationPage() {
 
           {/* Next Steps */}
           <div className="card">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Next Steps</h2>
-            <p className="text-gray-700 mb-6">
-              Now that you've configured WSL, explore these next steps:
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Next Steps</h2>
+            <p className="text-gray-700 dark:text-gray-300 mb-6">
+              Keep your momentum going with these curated guides:
             </p>
-            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Link href="/development" className="block p-6 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Development Setup</h3>
-                <p className="text-gray-600">Set up your development environment with essential tools and VS Code integration.</p>
+              <Link href="/development" className="block p-6 bg-blue-50 dark:bg-wsl-blue/10 rounded-lg hover:bg-blue-100 dark:hover:bg-wsl-blue/20 transition-colors">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Development Setup</h3>
+                <p className="text-gray-600 dark:text-gray-300">Set up your development environment with essential tools and VS Code integration.</p>
               </Link>
               
-              <Link href="/best-practices" className="block p-6 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Best Practices</h3>
-                <p className="text-gray-600">Learn the dos and don'ts of WSL development for optimal productivity.</p>
+              <Link href="/best-practices" className="block p-6 bg-green-50 dark:bg-green-900/30 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/40 transition-colors">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Best Practices</h3>
+                <p className="text-gray-600 dark:text-gray-300">Learn the dos and don'ts of WSL development for optimal productivity.</p>
               </Link>
               
-              <Link href="/tools" className="block p-6 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Essential Tools</h3>
-                <p className="text-gray-600">Discover must-have tools and applications that work great with WSL.</p>
+              <Link href="/tools" className="block p-6 bg-purple-50 dark:bg-purple-900/30 rounded-lg hover:bg-purple-100 dark:hover:bg-purple-900/40 transition-colors">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Essential Tools</h3>
+                <p className="text-gray-600 dark:text-gray-300">Discover must-have tools and applications that work great with WSL.</p>
               </Link>
               
-              <Link href="/troubleshooting" className="block p-6 bg-yellow-50 rounded-lg hover:bg-yellow-100 transition-colors">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Troubleshooting</h3>
-                <p className="text-gray-600">Common configuration issues and their solutions.</p>
+              <Link href="/troubleshooting" className="block p-6 bg-yellow-50 dark:bg-yellow-900/30 rounded-lg hover:bg-yellow-100 dark:hover:bg-yellow-900/40 transition-colors">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Troubleshooting</h3>
+                <p className="text-gray-600 dark:text-gray-300">Common configuration issues and their solutions.</p>
               </Link>
             </div>
           </div>

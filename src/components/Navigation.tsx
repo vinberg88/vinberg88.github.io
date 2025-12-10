@@ -22,7 +22,7 @@ export default function Navigation() {
   const pathname = usePathname()
 
   return (
-    <nav className="bg-white shadow-lg sticky top-0 z-50">
+    <nav className="bg-white/90 dark:bg-gray-900/90 backdrop-blur supports-[backdrop-filter]:bg-white/80 supports-[backdrop-filter]:dark:bg-gray-900/80 shadow-lg sticky top-0 z-50 border-b border-gray-100 dark:border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
@@ -30,7 +30,7 @@ export default function Navigation() {
               <div className="w-8 h-8 bg-wsl-blue rounded flex items-center justify-center">
                 <span className="text-white font-bold text-sm">WSL</span>
               </div>
-              <span className="text-xl font-bold text-gray-900">WSL Guide</span>
+              <span className="text-xl font-bold text-gray-900 dark:text-gray-100">WSL Guide</span>
             </Link>
           </div>
           
@@ -52,7 +52,7 @@ export default function Navigation() {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-600 hover:text-gray-900 focus:outline-none focus:text-gray-900"
+              className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white focus:outline-none focus:text-gray-900 dark:focus:text-white"
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -68,15 +68,15 @@ export default function Navigation() {
       {/* Mobile Navigation */}
       {isOpen && (
         <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 className={`block px-3 py-2 text-base font-medium ${
                   pathname === item.href
-                    ? 'text-wsl-blue bg-blue-50'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                    ? 'text-wsl-blue bg-blue-50 dark:bg-wsl-blue/10'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800'
                 }`}
                 onClick={() => setIsOpen(false)}
               >

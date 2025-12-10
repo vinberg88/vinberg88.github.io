@@ -30,7 +30,7 @@ export default function ToolsPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <section className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
@@ -46,12 +46,12 @@ export default function ToolsPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {tools.map((category, index) => (
             <div key={index} className="mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-8">{category.category}</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8">{category.category}</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
                 {category.items.map((tool, toolIndex) => (
-                  <div key={toolIndex} className="card hover:shadow-lg transition-shadow">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{tool.name}</h3>
-                    <p className="text-gray-600 mb-4">{tool.description}</p>
+                  <div key={toolIndex} className="card hover:shadow-lg hover:shadow-wsl-blue/20 transition-shadow">
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">{tool.name}</h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4">{tool.description}</p>
                     <a
                       href={tool.link}
                       target="_blank"

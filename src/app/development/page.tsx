@@ -1,6 +1,6 @@
 export default function DevelopmentPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-purple-600 to-blue-600 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,32 +19,32 @@ export default function DevelopmentPage() {
           
           {/* VS Code Setup */}
           <div className="card mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">VS Code with WSL</h2>
-            <p className="text-gray-700 mb-6">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">VS Code with WSL</h2>
+            <p className="text-gray-700 dark:text-gray-300 mb-6">
               Visual Studio Code provides excellent integration with WSL through the Remote-WSL extension.
             </p>
             
             <div className="space-y-6">
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Install VS Code and Remote-WSL Extension</h3>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Install VS Code and Remote-WSL Extension</h3>
                 <div className="space-y-4">
                   <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div className="w-6 h-6 bg-blue-100 text-blue-600 dark:bg-blue-900/40 dark:text-blue-200 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                       <span className="text-xs font-bold">1</span>
                     </div>
-                    <p className="text-gray-700">Download and install <a href="https://code.visualstudio.com/" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Visual Studio Code</a> on Windows</p>
+                    <p className="text-gray-700 dark:text-gray-300">Download and install <a href="https://code.visualstudio.com/" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Visual Studio Code</a> on Windows</p>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div className="w-6 h-6 bg-blue-100 text-blue-600 dark:bg-blue-900/40 dark:text-blue-200 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                       <span className="text-xs font-bold">2</span>
                     </div>
-                    <p className="text-gray-700">Install the <strong>Remote - WSL</strong> extension from the VS Code marketplace</p>
+                    <p className="text-gray-700 dark:text-gray-300">Install the <strong>Remote - WSL</strong> extension from the VS Code marketplace</p>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div className="w-6 h-6 bg-blue-100 text-blue-600 dark:bg-blue-900/40 dark:text-blue-200 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                       <span className="text-xs font-bold">3</span>
                     </div>
-                    <p className="text-gray-700">Open WSL and run <code className="bg-gray-100 px-2 py-1 rounded">code .</code> to launch VS Code in WSL mode</p>
+                    <p className="text-gray-700 dark:text-gray-300">Open WSL and run <code className="bg-gray-100 dark:bg-gray-800 dark:text-gray-100 px-2 py-1 rounded">code .</code> to launch VS Code in WSL mode</p>
                   </div>
                 </div>
               </div>
@@ -75,12 +75,12 @@ export default function DevelopmentPage() {
 
           {/* Essential Development Tools */}
           <div className="card mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Essential Development Tools</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Essential Development Tools</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Version Control */}
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Git</h3>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Git</h3>
                 <div className="terminal-window mb-4">
                   <div className="terminal-header">
                     <div className="terminal-dot bg-red-500"></div>
@@ -100,7 +100,7 @@ export default function DevelopmentPage() {
 
               {/* Node.js */}
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Node.js & npm</h3>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Node.js & npm</h3>
                 <div className="terminal-window mb-4">
                   <div className="terminal-header">
                     <div className="terminal-dot bg-red-500"></div>
@@ -120,7 +120,7 @@ export default function DevelopmentPage() {
 
               {/* Python */}
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Python & pip</h3>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Python & pip</h3>
                 <div className="terminal-window mb-4">
                   <div className="terminal-header">
                     <div className="terminal-dot bg-red-500"></div>
@@ -139,7 +139,7 @@ export default function DevelopmentPage() {
 
               {/* Docker */}
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Docker</h3>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Docker</h3>
                 <div className="terminal-window mb-4">
                   <div className="terminal-header">
                     <div className="terminal-dot bg-red-500"></div>
@@ -160,8 +160,8 @@ export default function DevelopmentPage() {
 
           {/* Project Structure */}
           <div className="card mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Recommended Project Structure</h2>
-            <p className="text-gray-700 mb-6">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Recommended Project Structure</h2>
+            <p className="text-gray-700 dark:text-gray-300 mb-6">
               Organize your projects in the WSL file system for best performance:
             </p>
             
@@ -190,7 +190,7 @@ export default function DevelopmentPage() {
               </div>
             </div>
             
-            <div className="bg-green-50 border-l-4 border-green-400 p-4">
+            <div className="bg-green-50 border-l-4 border-green-400 dark:bg-green-900/30 dark:border-green-500/70 p-4">
               <div className="flex">
                 <div className="flex-shrink-0">
                   <svg className="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
@@ -198,9 +198,9 @@ export default function DevelopmentPage() {
                   </svg>
                 </div>
                 <div className="ml-3">
-                  <p className="text-sm text-green-700">
+                  <p className="text-sm text-green-700 dark:text-green-200">
                     <strong>Pro Tip:</strong> Keep all your development projects in the Linux file system 
-                    (starting with <code className="bg-green-100 px-1 py-0.5 rounded">/home/username/</code>) 
+                    (starting with <code className="bg-green-100 dark:bg-green-900/40 dark:text-green-200 px-1 py-0.5 rounded">/home/username/</code>) 
                     for optimal performance and tool compatibility.
                   </p>
                 </div>
@@ -210,11 +210,11 @@ export default function DevelopmentPage() {
 
           {/* Development Workflows */}
           <div className="card">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Development Workflows</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Development Workflows</h2>
             
             <div className="space-y-8">
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Web Development with Next.js</h3>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Web Development with Next.js</h3>
                 <div className="terminal-window">
                   <div className="terminal-header">
                     <div className="terminal-dot bg-red-500"></div>
@@ -254,7 +254,7 @@ export default function DevelopmentPage() {
               </div>
               
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Python Development with Virtual Environments</h3>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Python Development with Virtual Environments</h3>
                 <div className="terminal-window">
                   <div className="terminal-header">
                     <div className="terminal-dot bg-red-500"></div>
