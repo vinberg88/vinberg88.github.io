@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { ThemeToggle } from './ThemeToggle'
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -44,6 +45,7 @@ export default function Navigation() {
                 {item.name}
               </Link>
             ))}
+            <ThemeToggle />
           </div>
 
           {/* Mobile menu button */}
@@ -56,6 +58,9 @@ export default function Navigation() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
+            <div className="ml-2">
+              <ThemeToggle />
+            </div>
           </div>
         </div>
       </div>

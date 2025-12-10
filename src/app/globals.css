@@ -8,11 +8,11 @@
   }
   
   body {
-    @apply bg-gray-50 text-gray-900;
+    @apply bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold text-gray-900;
+    @apply font-semibold text-gray-900 dark:text-gray-100;
   }
 }
 
@@ -22,7 +22,7 @@
   }
   
   .terminal-header {
-    @apply bg-gray-700 rounded-t-lg px-4 py-2 flex items-center space-x-2;
+    @apply bg-gray-700 dark:bg-gray-800 rounded-t-lg px-4 py-2 flex items-center space-x-2;
   }
   
   .terminal-dot {
@@ -38,7 +38,7 @@
   }
   
   .nav-link {
-    @apply text-gray-600 hover:text-wsl-blue transition-colors duration-200;
+    @apply text-gray-600 hover:text-wsl-blue dark:text-gray-300 dark:hover:text-wsl-blue transition-colors duration-200;
   }
   
   .nav-link.active {
@@ -50,11 +50,11 @@
   }
   
   .btn-secondary {
-    @apply bg-gray-200 text-gray-800 px-6 py-3 rounded-lg hover:bg-gray-300 transition-colors duration-200 font-medium;
+    @apply bg-gray-200 text-gray-800 px-6 py-3 rounded-lg hover:bg-gray-300 transition-colors duration-200 font-medium dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600;
   }
   
   .card {
-    @apply bg-white rounded-lg shadow-md p-6 border border-gray-200;
+    @apply bg-white rounded-lg shadow-md p-6 border border-gray-200 dark:bg-gray-800 dark:border-gray-700;
   }
   
   .feature-card {
