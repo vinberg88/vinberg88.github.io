@@ -52,9 +52,9 @@ export function ThemeProvider({
       const media = window.matchMedia('(prefers-color-scheme: dark)')
       media.addEventListener('change', listener)
       return () => media.removeEventListener('change', listener)
+    } else {
+      root.classList.add(theme)
     }
-
-    root.classList.add(theme)
   }, [theme])
 
   const value = {
