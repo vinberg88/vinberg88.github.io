@@ -38,7 +38,7 @@
   }
   
   .nav-link {
-    @apply inline-flex items-center px-3 py-1.5 text-sm font-medium text-gray-600 rounded-full border border-transparent
+    @apply inline-flex items-center px-2.5 py-1 text-xs font-medium text-gray-600 rounded-full border border-transparent
       hover:text-wsl-blue hover:border-wsl-blue/40 hover:bg-wsl-blue/10 transition-colors duration-200
       dark:text-gray-300 dark:hover:text-wsl-blue dark:hover:border-wsl-blue/40 dark:hover:bg-wsl-blue/10;
   }

@@ -11,7 +11,7 @@ type NavigationItem = {
   icon: ReactNode
 }
 
-const iconClasses = 'w-4 h-4'
+const iconClasses = 'w-3.5 h-3.5'
 
 const navigation: NavigationItem[] = [
   {
@@ -113,47 +113,6 @@ const navigation: NavigationItem[] = [
         <path d="M8.5 8.5 5.5 12l3 3.5" />
         <path d="M15.5 8.5 18.5 12l-3 3.5" />
         <path d="M12 7l-1.5 10" />
-      </svg>
-    )
-  },
-  {
-    name: 'Node.js',
-    href: '/node',
-    icon: (
-      <svg
-        className={iconClasses}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={1.6}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        aria-hidden="true"
-      >
-        <path d="M12 4.5 19 8.5v7l-7 4-7-4v-7l7-4z" />
-        <path d="M10 11.75h3.25a1.75 1.75 0 0 1 0 3.5H12.5" />
-        <path d="M12 15.25v-3.5" />
-      </svg>
-    )
-  },
-  {
-    name: 'Node.js (Legacy)',
-    href: '/node-old',
-    icon: (
-      <svg
-        className={iconClasses}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={1.6}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        aria-hidden="true"
-      >
-        <circle cx={12} cy={12} r={6.5} />
-        <path d="M12 8.75v3.25l2.25 1.5" />
-        <path d="M9.25 6.75 7.5 5" />
-        <path d="M14.75 6.75 16.5 5" />
       </svg>
     )
   },
@@ -286,7 +245,7 @@ export default function Navigation() {
 
   return (
     <nav className="bg-white/90 dark:bg-gray-900/90 backdrop-blur supports-[backdrop-filter]:bg-white/80 supports-[backdrop-filter]:dark:bg-gray-900/80 shadow-lg sticky top-0 z-50 border-b border-gray-100 dark:border-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
@@ -298,14 +257,14 @@ export default function Navigation() {
           </div>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1.5">
+          <div className="hidden md:flex items-center gap-1">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
                 className={`nav-link ${pathname === item.href ? 'active' : ''}`}
               >
-                <span className="flex items-center gap-1.5">
+                <span className="flex items-center gap-1">
                   <span className="shrink-0" aria-hidden="true">
                     {item.icon}
                   </span>
