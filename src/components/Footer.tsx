@@ -1,5 +1,7 @@
 import Link from 'next/link'
 
+import SocialLinks from './SocialLinks'
+
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white">
@@ -15,78 +17,7 @@ export default function Footer() {
             <p className="text-gray-400 mb-4">
               Your comprehensive resource for Windows Subsystem for Linux. Learn, configure, and master WSL development workflows.
             </p>
-            <div className="flex space-x-4">
-              <a
-                href="https://github.com/vinberg88/opensuse"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                <span className="sr-only">GitHub</span>
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-              </a>
-              {/* Project GitHub */}
-              <a
-                href="https://github.com/vinberg88/vinberg88.github.io"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                <span className="sr-only">Project GitHub</span>
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-              </a>
-              <a
-                href="https://docs.microsoft.com/en-us/windows/wsl/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                <span className="sr-only">Microsoft Docs</span>
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M0 0v11.4l11.4-11.4H0zm12.6 0v11.4L24 0H12.6zM0 12.6V24h11.4L0 12.6zm12.6 11.4H24V12.6L12.6 24z"/>
-                </svg>
-              </a>
-              {/* YouTube */}
-              <a
-                href="https://www.youtube.com/@mattiasvinberg"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                <span className="sr-only">YouTube</span>
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M23.498 6.186a2.999 2.999 0 00-2.116-2.116C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.382.57A2.999 2.999 0 00.502 6.186C-.001 8.08 0 12 0 12s-.001 3.92.502 5.814a2.999 2.999 0 002.116 2.116C4.5 20.5 12 20.5 12 20.5s7.5 0 9.382-.57a2.999 2.999 0 002.116-2.116C24.001 15.92 24 12 24 12s.001-3.92-.502-5.814zM9.75 15.5v-7l6 3.5-6 3.5z"/>
-                </svg>
-              </a>
-              {/* LinkedIn */}
-              <a
-                href="https://www.linkedin.com/in/mattias-vinberg/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                <span className="sr-only">LinkedIn</span>
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M4.98 3.5C3.87 3.5 3 4.38 3 5.48c0 1.1.87 1.98 1.98 1.98 1.1 0 1.98-.88 1.98-1.98 0-1.1-.88-1.98-1.98-1.98zM3.5 8.5h3v12h-3v-12zM9.5 8.5h2.86v1.64h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.6v7.32h-3v-6.48c0-1.54-.03-3.52-2.14-3.52-2.15 0-2.48 1.68-2.48 3.42v6.58h-3v-12z"/>
-                </svg>
-              </a>
-              {/* Twitter/X */}
-              <a
-                href="https://x.com/mattiasvinberg"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                <span className="sr-only">Twitter</span>
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.243 2H21l-6.507 7.455L22.5 22h-6.243l-4.777-6.338L5.867 22H3.11l6.936-7.95L1.5 2h6.243l4.315 5.727L18.243 2zm-2.2 18h1.8l-8.04-10.66L5 4h-1.8l8.04 10.66L16.043 20z"/>
-                </svg>
-              </a>
-            </div>
+            <SocialLinks className="mt-2" />
           </div>
           
           <div>

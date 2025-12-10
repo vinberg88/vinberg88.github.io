@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import SocialLinks from './SocialLinks'
+
 export default function Hero() {
   return (
     <section className="bg-gradient-to-b from-wsl-blue to-blue-700 text-white">
@@ -28,14 +30,16 @@ export default function Hero() {
               unoptimized
             />
           </div>
+          <div className="mt-8 text-blue-50">
+            Your guide to WSL – from installation to advanced development workflows. Learn how to seamlessly integrate
+            Linux tools with Windows development.
+          </div>
+          <div className="mt-8 flex justify-center">
+            <SocialLinks appearance="light" variant="minimal" />
+          </div>
         </div>
         {/* Moved closing div above to fix JSX structure */}
-        <div>
-          Your guide to WSL - from installation to advanced development workflows. 
-          Learn how to seamlessly integrate Linux tools with Windows development.
-        </div>
-        <br />
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
           <Link
             href="/installation"
             className="bg-white text-wsl-blue px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 text-lg"
