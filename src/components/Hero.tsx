@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Hero() {
@@ -16,11 +17,17 @@ export default function Hero() {
               Latest Project For WSL - FEDORA 42 and KDE 6
             </Link>
           </div>
-          <img
-            src="https://lh3.googleusercontent.com/a/ACg8ocIsVLpogTErfcIeG65iS3MKzgtHCIuaxuo2Te9BmkBYPVci96qs=s288-c-no"
-            alt="Matias Vinberg"
-            style={{ display: "block", margin: "1rem auto" }}
-          />
+          <div className="flex justify-center mt-8">
+            <Image
+              src="https://lh3.googleusercontent.com/a/ACg8ocIsVLpogTErfcIeG65iS3MKzgtHCIuaxuo2Te9BmkBYPVci96qs=s288-c-no"
+              alt="Portrait of Mattias Vinberg"
+              width={144}
+              height={144}
+              className="rounded-full shadow-lg"
+              priority
+              unoptimized
+            />
+          </div>
         </div>
         {/* Moved closing div above to fix JSX structure */}
         <div>

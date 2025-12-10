@@ -64,7 +64,7 @@ export default function Footer() {
               </a>
               {/* LinkedIn */}
               <a
-                href="https://www.linkedin.com/in/mattiasvinberg/"
+                href="https://www.linkedin.com/in/mattias-vinberg/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors"

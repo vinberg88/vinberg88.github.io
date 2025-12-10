@@ -33,13 +33,13 @@ export default function QuickStart() {
   ]
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-gray-50 dark:bg-gray-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             Quick Start Guide
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Get up and running with WSL in just a few minutes. Follow these simple steps 
             to transform your Windows development environment.
           </p>
@@ -55,13 +55,13 @@ export default function QuickStart() {
               </div>
               
               <div className="flex-grow">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
                   {step.title}
                 </h3>
-                <p className="text-gray-600 mb-3">
+                <p className="text-gray-600 dark:text-gray-300 mb-3">
                   {step.description}
                 </p>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-500 dark:text-gray-400">
                   {step.details}
                 </p>
               </div>

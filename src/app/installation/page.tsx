@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function InstallationPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-wsl-blue to-blue-600 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -21,52 +21,52 @@ export default function InstallationPage() {
           
           {/* Prerequisites */}
           <div className="card mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Prerequisites</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Prerequisites</h2>
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div className="w-6 h-6 bg-green-100 text-green-600 dark:bg-green-900/40 dark:text-green-300 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                 </div>
-                <p className="text-gray-700"><strong>Windows 10 version 2004</strong> (Build 19041) or higher, or <strong>Windows 11</strong></p>
+                <p className="text-gray-700 dark:text-gray-300"><strong>Windows 10 version 2004</strong> (Build 19041) or higher, or <strong>Windows 11</strong></p>
               </div>
               <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div className="w-6 h-6 bg-green-100 text-green-600 dark:bg-green-900/40 dark:text-green-300 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                 </div>
-                <p className="text-gray-700"><strong>Administrator privileges</strong> on your Windows machine</p>
+                <p className="text-gray-700 dark:text-gray-300"><strong>Administrator privileges</strong> on your Windows machine</p>
               </div>
               <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div className="w-6 h-6 bg-green-100 text-green-600 dark:bg-green-900/40 dark:text-green-300 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                 </div>
-                <p className="text-gray-700"><strong>Virtualization enabled</strong> in BIOS/UEFI (for WSL 2)</p>
+                <p className="text-gray-700 dark:text-gray-300"><strong>Virtualization enabled</strong> in BIOS/UEFI (for WSL 2)</p>
               </div>
             </div>
           </div>
 
           {/* Method 1: Simple Installation */}
           <div className="card mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Method 1: Simple Installation (Recommended)</h2>
-            <p className="text-gray-700 mb-6">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Method 1: Simple Installation (Recommended)</h2>
+            <p className="text-gray-700 dark:text-gray-300 mb-6">
               The easiest way to install WSL is using the new simplified command. This will install WSL 2 with Ubuntu by default.
             </p>
             
             <div className="space-y-6">
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Step 1: Open PowerShell as Administrator</h3>
-                <p className="text-gray-700 mb-3">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Step 1: Open PowerShell as Administrator</h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-3">
                   Right-click on the Start button and select "Windows PowerShell (Admin)" or "Terminal (Admin)".
                 </p>
               </div>
               
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Step 2: Run the Installation Command</h3>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Step 2: Run the Installation Command</h3>
                 <div className="terminal-window">
                   <div className="terminal-header">
                     <div className="terminal-dot bg-red-500"></div>
@@ -83,26 +83,26 @@ export default function InstallationPage() {
                     </div>
                   </div>
                 </div>
-                <p className="text-gray-700 mt-3">
+                <p className="text-gray-700 dark:text-gray-300 mt-3">
                   This command will automatically enable the required Windows features, download and install the Linux kernel, 
                   and install Ubuntu as the default distribution.
                 </p>
               </div>
               
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Step 3: Restart Your Computer</h3>
-                <p className="text-gray-700">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Step 3: Restart Your Computer</h3>
+                <p className="text-gray-700 dark:text-gray-300">
                   After the installation completes, restart your computer to finish the setup process.
                 </p>
               </div>
               
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Step 4: Complete Ubuntu Setup</h3>
-                <p className="text-gray-700 mb-3">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Step 4: Complete Ubuntu Setup</h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-3">
                   After restarting, Ubuntu will automatically launch and complete the installation. 
                   You'll be prompted to create a username and password for your Linux user account.
                 </p>
-                <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                <div className="bg-yellow-50 border-l-4 border-yellow-400 dark:bg-yellow-900/30 dark:border-yellow-500/70 p-4">
                   <div className="flex">
                     <div className="flex-shrink-0">
                       <svg className="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
@@ -110,7 +110,7 @@ export default function InstallationPage() {
                       </svg>
                     </div>
                     <div className="ml-3">
-                      <p className="text-sm text-yellow-700">
+                      <p className="text-sm text-yellow-700 dark:text-yellow-200">
                         <strong>Important:</strong> The username and password you create here are separate from your Windows credentials. 
                         Choose a secure password and remember it – you'll need it for sudo commands.
                       </p>
@@ -123,16 +123,16 @@ export default function InstallationPage() {
 
           {/* Method 2: Manual Installation */}
           <div className="card mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Method 2: Manual Installation</h2>
-            <p className="text-gray-700 mb-6">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Method 2: Manual Installation</h2>
+            <p className="text-gray-700 dark:text-gray-300 mb-6">
               If you prefer more control over the installation process or the simple method doesn't work, 
               you can install WSL manually.
             </p>
             
             <div className="space-y-6">
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Step 1: Enable Windows Features</h3>
-                <p className="text-gray-700 mb-3">Run these commands in PowerShell as Administrator:</p>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Step 1: Enable Windows Features</h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-3">Run these commands in PowerShell as Administrator:</p>
                 <div className="terminal-window">
                   <div className="terminal-header">
                     <div className="terminal-dot bg-red-500"></div>
@@ -156,8 +156,8 @@ export default function InstallationPage() {
               </div>
               
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Step 2: Download and Install Linux Kernel Update</h3>
-                <p className="text-gray-700 mb-3">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Step 2: Download and Install Linux Kernel Update</h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-3">
                   Download the <a href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi" 
                   className="text-wsl-blue hover:underline" target="_blank" rel="noopener noreferrer">
                   WSL2 Linux kernel update package</a> and install it.
@@ -165,7 +165,7 @@ export default function InstallationPage() {
               </div>
               
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Step 3: Set WSL 2 as Default</h3>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Step 3: Set WSL 2 as Default</h3>
                 <div className="terminal-window">
                   <div className="terminal-header">
                     <div className="terminal-dot bg-red-500"></div>
@@ -183,8 +183,8 @@ export default function InstallationPage() {
               </div>
               
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">Step 4: Install a Linux Distribution</h3>
-                <p className="text-gray-700 mb-3">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Step 4: Install a Linux Distribution</h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-3">
                   Install your preferred Linux distribution from the Microsoft Store or using command line:
                 </p>
                 <div className="terminal-window">
@@ -215,8 +215,8 @@ export default function InstallationPage() {
 
           {/* Verification */}
           <div className="card mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Verify Installation</h2>
-            <p className="text-gray-700 mb-6">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Verify Installation</h2>
+            <p className="text-gray-700 dark:text-gray-300 mb-6">
               Once installation is complete, verify that WSL is working correctly:
             </p>
             
@@ -239,7 +239,7 @@ export default function InstallationPage() {
               </div>
             </div>
             
-            <p className="text-gray-700 mb-4">You can also test by running a Linux command:</p>
+            <p className="text-gray-700 dark:text-gray-300 mb-4">You can also test by running a Linux command:</p>
             
             <div className="terminal-window">
               <div className="terminal-header">
@@ -264,30 +264,30 @@ export default function InstallationPage() {
 
           {/* Next Steps */}
           <div className="card">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Next Steps</h2>
-            <p className="text-gray-700 mb-6">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Next Steps</h2>
+            <p className="text-gray-700 dark:text-gray-300 mb-6">
               Congratulations! You've successfully installed WSL. Here's what you can do next:
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Link href="/configuration" className="block p-6 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Configure WSL</h3>
-                <p className="text-gray-600">Set up your WSL environment, configure settings, and optimize performance.</p>
+              <Link href="/configuration" className="block p-6 bg-blue-50 dark:bg-wsl-blue/10 rounded-lg hover:bg-blue-100 dark:hover:bg-wsl-blue/20 transition-colors">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Configure WSL</h3>
+                <p className="text-gray-600 dark:text-gray-300">Set up your WSL environment, configure settings, and optimize performance.</p>
               </Link>
               
-              <Link href="/development" className="block p-6 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Development Setup</h3>
-                <p className="text-gray-600">Install development tools, set up VS Code, and create your first project.</p>
+              <Link href="/development" className="block p-6 bg-green-50 dark:bg-green-900/30 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/40 transition-colors">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Development Setup</h3>
+                <p className="text-gray-600 dark:text-gray-300">Install development tools, set up VS Code, and create your first project.</p>
               </Link>
               
-              <Link href="/tools" className="block p-6 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Essential Tools</h3>
-                <p className="text-gray-600">Discover must-have tools and applications for WSL development.</p>
+              <Link href="/tools" className="block p-6 bg-purple-50 dark:bg-purple-900/30 rounded-lg hover:bg-purple-100 dark:hover:bg-purple-900/40 transition-colors">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Essential Tools</h3>
+                <p className="text-gray-600 dark:text-gray-300">Discover must-have tools and applications for WSL development.</p>
               </Link>
               
-              <Link href="/troubleshooting" className="block p-6 bg-yellow-50 rounded-lg hover:bg-yellow-100 transition-colors">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Troubleshooting</h3>
-                <p className="text-gray-600">Common issues and solutions to help you resolve WSL problems.</p>
+              <Link href="/troubleshooting" className="block p-6 bg-yellow-50 dark:bg-yellow-900/30 rounded-lg hover:bg-yellow-100 dark:hover:bg-yellow-900/40 transition-colors">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Troubleshooting</h3>
+                <p className="text-gray-600 dark:text-gray-300">Common issues and solutions to help you resolve WSL problems.</p>
               </Link>
             </div>
           </div>

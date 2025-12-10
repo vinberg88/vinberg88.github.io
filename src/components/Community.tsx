@@ -33,13 +33,13 @@ export default function Community() {
   ]
 
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-gray-50 dark:bg-gray-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
             Community & Resources
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Join the vibrant WSL community. Get help, share knowledge, and stay updated 
             with the latest developments in Windows Subsystem for Linux.
           </p>
@@ -52,24 +52,24 @@ export default function Community() {
               href={resource.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="card hover:shadow-lg transition-shadow duration-200 block"
+              className="card hover:shadow-lg hover:shadow-wsl-blue/30 dark:hover:shadow-wsl-blue/20 transition-shadow duration-200 block"
             >
               <div className="flex items-start space-x-4">
                 <div className="text-3xl">{resource.icon}</div>
                 <div className="flex-grow">
                   <div className="flex items-center space-x-2 mb-2">
-                    <h3 className="text-lg font-semibold text-gray-900">
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                       {resource.title}
                     </h3>
-                    <span className="text-xs bg-wsl-blue text-white px-2 py-1 rounded-full">
+                    <span className="text-xs bg-wsl-blue/20 text-wsl-blue dark:bg-wsl-blue/30 dark:text-wsl-blue px-2 py-1 rounded-full">
                       {resource.type}
                     </span>
                   </div>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 dark:text-gray-300">
                     {resource.description}
                   </p>
                 </div>
-                <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
               </div>
@@ -78,11 +78,11 @@ export default function Community() {
         </div>
         
         <div className="text-center">
-          <div className="bg-white rounded-2xl p-8 shadow-md">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+          <div className="bg-white dark:bg-gray-900/70 rounded-2xl p-8 shadow-md shadow-gray-900/10 dark:shadow-black/40">
+            <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">
               Contribute to This Guide
             </h3>
-            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+            <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
               This WSL guide is a community effort. Help us improve it by contributing 
               tutorials, fixes, or new content. Every contribution makes the WSL 
               ecosystem better for everyone.

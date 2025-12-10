@@ -62,10 +62,10 @@ export default function ContactForm() {
   return (
     <div className="max-w-2xl mx-auto">
       <div className="card">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">Get in Touch</h2>
         
         {submitStatus === 'success' && (
-          <div className="mb-6 p-4 bg-green-50 border-l-4 border-green-400">
+          <div className="mb-6 p-4 bg-green-50 border-l-4 border-green-400 dark:bg-green-900/30 dark:border-green-500/70">
             <div className="flex">
               <div className="flex-shrink-0">
                 <svg className="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
@@ -73,8 +73,8 @@ export default function ContactForm() {
                 </svg>
               </div>
               <div className="ml-3">
-                <h3 className="text-sm font-medium text-green-800">Message sent successfully!</h3>
-                <div className="mt-2 text-sm text-green-700">
+                <h3 className="text-sm font-medium text-green-800 dark:text-green-200">Message sent successfully!</h3>
+                <div className="mt-2 text-sm text-green-700 dark:text-green-200/80">
                   <p>Thank you for your message. We'll get back to you soon!</p>
                 </div>
               </div>
@@ -83,7 +83,7 @@ export default function ContactForm() {
         )}
 
         {submitStatus === 'error' && (
-          <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-400">
+          <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-400 dark:bg-red-900/30 dark:border-red-500/70">
             <div className="flex">
               <div className="flex-shrink-0">
                 <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
@@ -91,8 +91,8 @@ export default function ContactForm() {
                 </svg>
               </div>
               <div className="ml-3">
-                <h3 className="text-sm font-medium text-red-800">Error sending message</h3>
-                <div className="mt-2 text-sm text-red-700">
+                <h3 className="text-sm font-medium text-red-800 dark:text-red-200">Error sending message</h3>
+                <div className="mt-2 text-sm text-red-700 dark:text-red-200/80">
                   <p>There was a problem sending your message. Please try again or contact us directly.</p>
                 </div>
               </div>
@@ -103,7 +103,7 @@ export default function ContactForm() {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Name *
               </label>
               <input
@@ -113,13 +113,13 @@ export default function ContactForm() {
                 required
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-wsl-blue focus:border-wsl-blue"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900/60 text-gray-900 dark:text-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-wsl-blue focus:border-wsl-blue"
                 placeholder="Your name"
               />
             </div>
             
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Email *
               </label>
               <input
@@ -129,14 +129,14 @@ export default function ContactForm() {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-wsl-blue focus:border-wsl-blue"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900/60 text-gray-900 dark:text-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-wsl-blue focus:border-wsl-blue"
                 placeholder="your.email@example.com"
               />
             </div>
           </div>
           
           <div>
-            <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Subject *
             </label>
             <input
@@ -146,13 +146,13 @@ export default function ContactForm() {
               required
               value={formData.subject}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-wsl-blue focus:border-wsl-blue"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900/60 text-gray-900 dark:text-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-wsl-blue focus:border-wsl-blue"
               placeholder="What's this about?"
             />
           </div>
           
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Message *
             </label>
             <textarea
@@ -162,7 +162,7 @@ export default function ContactForm() {
               rows={6}
               value={formData.message}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-wsl-blue focus:border-wsl-blue"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900/60 text-gray-900 dark:text-gray-100 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-wsl-blue focus:border-wsl-blue"
               placeholder="Tell us more about your question or feedback..."
             />
           </div>
