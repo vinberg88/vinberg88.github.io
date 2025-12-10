@@ -7,9 +7,12 @@ import { ThemeToggle } from './ThemeToggle'
 
 const navigation = [
   { name: 'Home', href: '/' },
+  { name: 'WSL Deep Dive', href: '/wsl' },
   { name: 'Installation', href: '/installation' },
   { name: 'Configuration', href: '/configuration' },
   { name: 'Development', href: '/development' },
+  { name: 'Node.js', href: '/node' },
+  { name: 'Node.js (Legacy)', href: '/node-old' },
   { name: 'Troubleshooting', href: '/troubleshooting' },
   { name: 'Best Practices', href: '/best-practices' },
   { name: 'Tools & Apps', href: '/tools' },

@@ -174,7 +174,7 @@ export default function ConfigurationPage() {
               
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Disk Space Management</h3>
-                <p className="text-gray-700 mb-4">
+                <p className="text-gray-700 dark:text-gray-300 mb-4">
                   WSL disk images can grow large over time. Here's how to compact them:
                 </p>
                 
@@ -369,6 +369,19 @@ export default function ConfigurationPage() {
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Troubleshooting</h3>
                 <p className="text-gray-600 dark:text-gray-300">Common configuration issues and their solutions.</p>
               </Link>
+
+              <a
+                href="https://gemini.google.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-6 bg-indigo-50 rounded-lg hover:bg-indigo-100 transition-colors"
+              >
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Explore Gemini AI</h3>
+                <p className="text-gray-600">
+                  Experiment with Google's Gemini models inside your WSL workflows—generate scripts, documentation, and
+                  automation ideas directly from the terminal.
+                </p>
+              </a>
             </div>
           </div>
         </div>

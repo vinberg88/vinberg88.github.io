@@ -9,7 +9,7 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Setup Windows Subsystem for Linux 
+            Setup Windows Subsystem for Linux
           </h1>
           <div className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
             <Link
@@ -23,23 +23,22 @@ export default function Hero() {
             <Image
               src="https://lh3.googleusercontent.com/a/ACg8ocIsVLpogTErfcIeG65iS3MKzgtHCIuaxuo2Te9BmkBYPVci96qs=s288-c-no"
               alt="Portrait of Mattias Vinberg"
-              width={144}
-              height={144}
+              width={160}
+              height={160}
               className="rounded-full shadow-lg"
               priority
               unoptimized
             />
           </div>
-          <div className="mt-8 text-blue-50">
+          <p className="mt-8 text-lg text-blue-50 max-w-2xl mx-auto">
             Your guide to WSL – from installation to advanced development workflows. Learn how to seamlessly integrate
             Linux tools with Windows development.
-          </div>
+          </p>
           <div className="mt-8 flex justify-center">
             <SocialLinks appearance="light" variant="minimal" />
           </div>
         </div>
-        {/* Moved closing div above to fix JSX structure */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
           <Link
             href="/installation"
             className="bg-white text-wsl-blue px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 text-lg"

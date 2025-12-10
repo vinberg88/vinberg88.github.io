@@ -2,31 +2,34 @@ import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 
 // Configure nodemailer transporter
-const createTransporter = () => {
-  // For development, use Ethereal Email (fake SMTP)
-  // For production, configure with your actual SMTP settings
+const createTransporter = async () => {
+  const port = parseInt(process.env.SMTP_PORT || '587', 10)
+  const secure = process.env.SMTP_SECURE === 'true' || port === 465
+
   if (process.env.NODE_ENV === 'production') {
     return nodemailer.createTransport({
       host: process.env.SMTP_HOST || 'smtp.gmail.com',
-      port: parseInt(process.env.SMTP_PORT || '587'),
-      secure: false, // true for 465, false for other ports
+      port,
+      secure,
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
-    })
-  } else {
-    // Development - use Ethereal Email
-    return nodemailer.createTransport({
-      host: 'smtp.ethereal.email',
-      port: 587,
-      secure: false,
-      auth: {
-        user: 'ethereal.user@ethereal.email',
-        pass: 'ethereal.pass',
-      },
+      pool: process.env.SMTP_POOL === 'true' || false,
     })
   }
+
+  const testAccount = await nodemailer.createTestAccount()
+
+  return nodemailer.createTransport({
+    host: testAccount.smtp.host,
+    port: testAccount.smtp.port,
+    secure: testAccount.smtp.secure,
+    auth: {
+      user: testAccount.user,
+      pass: testAccount.pass,
+    },
+  })
 }
 
 export async function POST(request: NextRequest) {
@@ -51,7 +54,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const transporter = createTransporter()
+    const transporter = await createTransporter()
 
     // Email content
     const mailOptions = {
@@ -106,8 +109,14 @@ Timestamp: ${new Date().toISOString()}
 
     // Send email
     const info = await transporter.sendMail(mailOptions)
-    
+
     console.log('Message sent: %s', info.messageId)
+    if (process.env.NODE_ENV !== 'production') {
+      const previewUrl = nodemailer.getTestMessageUrl(info)
+      if (previewUrl) {
+        console.log('Preview URL: %s', previewUrl)
+      }
+    }
     
     // Send auto-reply to user
     const autoReplyOptions = {
@@ -164,7 +173,14 @@ The WSL Guide Team
       `,
     }
 
-    await transporter.sendMail(autoReplyOptions)
+    const autoReplyInfo = await transporter.sendMail(autoReplyOptions)
+
+    if (process.env.NODE_ENV !== 'production') {
+      const autoReplyPreview = nodemailer.getTestMessageUrl(autoReplyInfo)
+      if (autoReplyPreview) {
+        console.log('Auto-reply preview URL: %s', autoReplyPreview)
+      }
+    }
 
     return NextResponse.json(
       { 
