@@ -107,35 +107,108 @@ const resources = [
 export default function NodePage() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <section className="bg-gradient-to-r from-emerald-500 to-blue-600 text-white py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Node.js on WSL</h1>
-          <p className="text-xl text-emerald-100">
-            Configure a blazing-fast Node.js environment inside Windows Subsystem for Linux—covering installation,
-            version management, tooling, and debugging best practices.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link
-              href="/installation/"
-              className="bg-white text-emerald-600 px-6 py-3 rounded-lg font-semibold shadow hover:bg-emerald-50 transition-colors"
-            >
-              Install WSL First
-            </Link>
-            <a
-              href="https://nodejs.org/en/download/package-manager"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-emerald-600 transition-colors"
-            >
-              Node.js Downloads
-            </a>
+      <section className="relative overflow-hidden bg-gradient-to-br from-emerald-500 via-teal-500 to-blue-600 text-white py-20">
+        <div className="absolute inset-0 opacity-30 mix-blend-overlay" aria-hidden="true">
+          <div className="absolute -top-24 right-1/3 h-64 w-64 rounded-full bg-white/20 blur-3xl" />
+          <div className="absolute -bottom-24 left-10 h-56 w-56 rounded-full bg-white/10 blur-2xl" />
+        </div>
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col-reverse lg:flex-row items-center gap-12">
+            <div className="w-full lg:w-7/12">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 border border-white/20 text-sm font-medium">
+                <span className="h-2 w-2 rounded-full bg-lime-300" />
+                Node.js + Windows Subsystem for Linux
+              </span>
+              <h1 className="mt-6 text-4xl md:text-6xl font-bold leading-tight">
+                Build, run, and debug Node.js apps natively on WSL
+              </h1>
+              <p className="mt-6 text-lg md:text-xl text-emerald-100/90 leading-relaxed max-w-2xl">
+                Combine Linux performance with Windows tooling. This guide walks you through installing Node.js with
+                modern version managers, configuring your editor, and shipping production-ready services from the WSL
+                terminal.
+              </p>
+              <ul className="mt-8 space-y-4 text-base md:text-lg text-emerald-50/90">
+                <li className="flex items-start gap-3">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/20 text-sm font-semibold">1</span>
+                  <span>Prep your distro for Node.js with build-essential packages and shell tweaks.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/20 text-sm font-semibold">2</span>
+                  <span>Install and switch between Node.js versions using nvm, fnm, or asdf.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/20 text-sm font-semibold">3</span>
+                  <span>Wire up VS Code debugging, package managers, and test runners for a polished workflow.</span>
+                </li>
+              </ul>
+              <div className="mt-10 flex flex-wrap gap-4">
+                <Link
+                  href="/installation/"
+                  className="bg-white text-emerald-600 px-6 py-3 rounded-lg font-semibold shadow-lg shadow-black/10 hover:bg-emerald-50 transition-colors"
+                >
+                  Install WSL First
+                </Link>
+                <Link
+                  href="#prerequisites"
+                  className="border-2 border-white/70 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-emerald-600 transition-colors"
+                >
+                  Skip to Setup Steps
+                </Link>
+                <a
+                  href="https://nodejs.org/en/download/package-manager"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-white/80 hover:text-white font-semibold"
+                >
+                  Node.js package manager docs
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div className="w-full lg:w-5/12">
+              <div className="relative rounded-2xl bg-gray-900/80 backdrop-blur border border-white/15 shadow-xl shadow-black/20 overflow-hidden">
+                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-lime-300 via-emerald-300 to-cyan-300" />
+                <div className="px-6 pt-6 pb-3">
+                  <div className="flex items-center justify-between text-sm text-white/60">
+                    <span className="font-semibold text-white/80">WSL Terminal</span>
+                    <span>~/workspace</span>
+                  </div>
+                  <div className="mt-5 space-y-2 font-mono text-sm text-white/80">
+                    <div><span className="text-lime-300">user@wsl</span><span className="text-cyan-300">:</span><span className="text-cyan-200">~</span><span className="text-white">$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash</span></div>
+                    <div><span className="text-lime-300">user@wsl</span><span className="text-cyan-300">:</span><span className="text-cyan-200">~</span><span className="text-white">$ source ~/.nvm/nvm.sh</span></div>
+                    <div><span className="text-lime-300">user@wsl</span><span className="text-cyan-300">:</span><span className="text-cyan-200">~/app</span><span className="text-white">$ nvm install --lts</span></div>
+                    <div><span className="text-lime-300">user@wsl</span><span className="text-cyan-300">:</span><span className="text-cyan-200">~/app</span><span className="text-white">$ npm run dev</span></div>
+                  </div>
+                </div>
+                <div className="px-6 pb-6 pt-4 bg-gray-900/60 border-t border-white/10">
+                  <p className="text-sm text-white/70 leading-relaxed">
+                    Prefer a GUI? Pair this workflow with{' '}
+                    <Link href="/development/" className="text-emerald-200 underline-offset-4 hover:underline">
+                      VS Code remote development
+                    </Link>{' '}
+                    or use{' '}
+                    <a
+                      href="https://learn.microsoft.com/windows/wsl/connect-usb"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-emerald-200 underline-offset-4 hover:underline"
+                    >
+                      WSLg
+                    </a>{' '}
+                    for GPU-accelerated browser previews.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="py-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="card mb-12">
+          <div className="card mb-12" id="prerequisites">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Prerequisites</h2>
             <p className="text-gray-700 dark:text-gray-300 mb-8">
               Start with a healthy WSL distro (Ubuntu, Debian, Arch, etc.). Run these checks inside your WSL terminal
