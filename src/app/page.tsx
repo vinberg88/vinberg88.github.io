@@ -264,7 +264,7 @@ export default function HomePage() {
                   <code className="text-white"># Convert your distro fleet to WSL 2</code>
                   <code className="text-emerald-300">wsl -l -q | ForEach-Object { wsl --set-version $_ 2 }</code>
                   <code className="text-white"># Apply your org .wslconfig everywhere</code>
-                  <code className="text-emerald-300">Copy-Item .wslconfig \\${'{'}env:USERPROFILE{'}'}</code>
+                  <code className="text-emerald-300">Copy-Item .wslconfig $env:USERPROFILE\\.wslconfig</code>
                   <code className="text-white"># Snapshot for rollback</code>
                   <code className="text-emerald-300">wsl --export Ubuntu-24.04 backups\\ubuntu-$(Get-Date -Format yyyyMMdd).tar</code>
                 </div>
