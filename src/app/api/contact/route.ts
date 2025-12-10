@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
+import type SMTPTransport from 'nodemailer/lib/smtp-transport'
+import type SMTPPool from 'nodemailer/lib/smtp-pool'
 
 // Configure nodemailer transporter
 const createTransporter = async () => {
@@ -7,21 +9,37 @@ const createTransporter = async () => {
   const secure = process.env.SMTP_SECURE === 'true' || port === 465
 
   if (process.env.NODE_ENV === 'production') {
-    return nodemailer.createTransport({
-      host: process.env.SMTP_HOST || 'smtp.gmail.com',
-      port,
-      secure,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-      pool: process.env.SMTP_POOL === 'true' || false,
-    })
+    const usePool = process.env.SMTP_POOL === 'true'
+    
+    if (usePool) {
+      const options: SMTPPool.Options = {
+        pool: true,
+        host: process.env.SMTP_HOST || 'smtp.gmail.com',
+        port,
+        secure,
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS,
+        },
+      }
+      return nodemailer.createTransport(options)
+    } else {
+      const options: SMTPTransport.Options = {
+        host: process.env.SMTP_HOST || 'smtp.gmail.com',
+        port,
+        secure,
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS,
+        },
+      }
+      return nodemailer.createTransport(options)
+    }
   }
 
   const testAccount = await nodemailer.createTestAccount()
 
-  return nodemailer.createTransport({
+  const options: SMTPTransport.Options = {
     host: testAccount.smtp.host,
     port: testAccount.smtp.port,
     secure: testAccount.smtp.secure,
@@ -29,7 +47,8 @@ const createTransporter = async () => {
       user: testAccount.user,
       pass: testAccount.pass,
     },
-  })
+  }
+  return nodemailer.createTransport(options)
 }
 
 export async function POST(request: NextRequest) {
@@ -112,7 +131,7 @@ Timestamp: ${new Date().toISOString()}
 
     console.log('Message sent: %s', info.messageId)
     if (process.env.NODE_ENV !== 'production') {
-      const previewUrl = nodemailer.getTestMessageUrl(info)
+      const previewUrl = nodemailer.getTestMessageUrl(info as any)
       if (previewUrl) {
         console.log('Preview URL: %s', previewUrl)
       }
@@ -176,7 +195,7 @@ The WSL Guide Team
     const autoReplyInfo = await transporter.sendMail(autoReplyOptions)
 
     if (process.env.NODE_ENV !== 'production') {
-      const autoReplyPreview = nodemailer.getTestMessageUrl(autoReplyInfo)
+      const autoReplyPreview = nodemailer.getTestMessageUrl(autoReplyInfo as any)
       if (autoReplyPreview) {
         console.log('Auto-reply preview URL: %s', autoReplyPreview)
       }
