@@ -478,7 +478,7 @@ export default function WslPage() {
                 >
                   <div className="relative h-32 w-32 rounded-full border-4 border-white/40 shadow-xl shadow-black/20 overflow-hidden transition-transform duration-200 group-hover:scale-105">
                     <img
-                      src="https://lh3.googleusercontent.com/a/ACg8ocIsVLpogTErfcIeG65iS3MKzgtHCIuaxuo2Te9BmkBYPVci96qs=s288-c-no"
+                      src="/profile.jpg"
                       alt="Portrait of Mattias Vinberg"
                       className="h-full w-full object-cover"
                     />
