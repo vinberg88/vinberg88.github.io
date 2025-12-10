@@ -263,7 +263,8 @@ export default function HomePage() {
                 <div className="terminal-content text-sm space-y-2">
                   <code className="text-white"># Convert your distro fleet to WSL 2</code>
                   <code className="text-emerald-300">
-                    {'wsl -l -q | ForEach-Object \u007B wsl --set-version $_ 2 \u007D'}
+                    wsl -l -q | ForEach-Object{' '}
+                    {'{'} wsl --set-version $_ 2 {'}'}
                   </code>
                   <code className="text-white"># Apply your org .wslconfig everywhere</code>
                   <code className="text-emerald-300">Copy-Item .wslconfig $env:USERPROFILE\\.wslconfig</code>
