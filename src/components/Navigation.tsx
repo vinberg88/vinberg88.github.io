@@ -1,19 +1,13 @@
 'use client'
 
-import { useState, type ReactNode } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { ThemeToggle } from './ThemeToggle'
 
-type NavigationItem = {
-  name: string
-  href: string
-  icon: ReactNode
-}
-
 const iconClasses = 'w-3.5 h-3.5'
 
-const navigation: NavigationItem[] = [
+const navigation = [
   {
     name: 'Home',
     href: '/',
