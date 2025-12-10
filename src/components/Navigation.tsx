@@ -7,6 +7,7 @@ import { ThemeToggle } from './ThemeToggle'
 
 const navigation = [
   { name: 'Home', href: '/' },
+  { name: 'WSL Deep Dive', href: '/wsl' },
   { name: 'Installation', href: '/installation' },
   { name: 'Configuration', href: '/configuration' },
   { name: 'Development', href: '/development' },
