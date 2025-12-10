@@ -338,8 +338,7 @@ export default function HomePage() {
             <div className="relative h-full bg-slate-900/70 p-6 flex items-center justify-center">
               <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-2xl overflow-hidden border-4 border-white/40 shadow-2xl shadow-black/40">
                 <Image
-                  src="/profile.jpg"
-                  alt="Mattias Vinberg"
+                  src="https://lh3.googleusercontent.com/a/ACg8ocIsVLpogTErfcIeG65iS3MKzgtHCIuaxuo2Te9BmkBYPVci96qs=s288-c-no"                  alt="Mattias Vinberg"
                   fill
                   sizes="(min-width: 1024px) 220px, 180px"
                   className="object-cover"
