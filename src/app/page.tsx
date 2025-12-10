@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 const quickStart = [
@@ -110,6 +111,12 @@ const updateHighlights = [
     description: 'Prebuilt templates that keep WSL, Docker, and VS Code remote development in sync.',
     href: '/development/#dev-containers'
   }
+]
+
+const creatorHighlights = [
+  'Bygger WSL-upplevelser med fokus på design, automation och hållbara flöden.',
+  'Mixar openSUSE-inspirerade desktops med Windows för en sömlös hybridmiljö.',
+  'Delar guider, skript och inspiration tillsammans med WSL-communityt.'
 ]
 
 export default function HomePage() {
@@ -320,6 +327,63 @@ export default function HomePage() {
                 </span>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative py-16">
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-sky-900 to-slate-800 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950" aria-hidden="true" />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,320px)_1fr] items-center bg-white/10 dark:bg-white/5 border border-white/20 rounded-3xl shadow-xl shadow-black/20 overflow-hidden">
+            <div className="relative h-full bg-slate-900/70 p-6 flex items-center justify-center">
+              <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-2xl overflow-hidden border-4 border-white/40 shadow-2xl shadow-black/40">
+                <Image
+                  src="/profile.jpg"
+                  alt="Mattias Vinberg"
+                  fill
+                  sizes="(min-width: 1024px) 220px, 180px"
+                  className="object-cover"
+                  priority
+                />
+              </div>
+              <div className="absolute inset-0 rounded-3xl pointer-events-none" aria-hidden="true">
+                <div className="absolute -inset-6 bg-gradient-to-br from-emerald-400/20 via-sky-400/15 to-indigo-500/20 blur-3xl" />
+              </div>
+            </div>
+            <div className="p-8 sm:p-10 text-white">
+              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-emerald-200/80">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" />
+                Creator spotlight
+              </span>
+              <h2 className="mt-4 text-3xl font-bold leading-tight">Mattias Vinberg</h2>
+              <p className="mt-4 text-base sm:text-lg text-slate-100/85 leading-relaxed">
+                Hej! Jag bygger och kuraterar WSL Guide för att göra Linux på Windows tillgängligt för alla – från nyfikna utvecklare till stora team.
+              </p>
+              <ul className="mt-6 space-y-3 text-sm sm:text-base text-slate-100/80">
+                {creatorHighlights.map((highlight) => (
+                  <li key={highlight} className="flex items-start gap-3">
+                    <svg className="mt-1 h-4 w-4 text-emerald-300" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-7.25 7.25a1 1 0 01-1.414 0l-3.5-3.5a1 1 0 011.414-1.414L8.5 11.086l6.543-6.543a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <span>{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <a
+                  href="https://github.com/vinberg88/opensuse"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold tracking-wide uppercase backdrop-blur transition hover:border-emerald-200 hover:bg-emerald-400/20 hover:text-emerald-50"
+                >
+                  <span className="h-2 w-2 rounded-full bg-emerald-300" />
+                  WSL - Desktop for All
+                </a>
+                <p className="text-xs text-slate-100/70">
+                  Följ projektet på GitHub och bidra med dina egna desktop-idéer.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
