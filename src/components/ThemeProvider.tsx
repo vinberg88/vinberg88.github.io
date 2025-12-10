@@ -44,8 +44,6 @@ export function ThemeProvider({
         : 'light'
 
       root.classList.add(systemTheme)
-      return
-    }
 
       const listener = (e: MediaQueryListEvent) => {
         root.classList.remove('light', 'dark')
@@ -54,7 +52,9 @@ export function ThemeProvider({
       const media = window.matchMedia('(prefers-color-scheme: dark)')
       media.addEventListener('change', listener)
       return () => media.removeEventListener('change', listener)
-    root.classList.add(theme)
+    } else {
+      root.classList.add(theme)
+    }
   }, [theme])
 
   const value = {
