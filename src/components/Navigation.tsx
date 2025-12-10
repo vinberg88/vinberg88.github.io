@@ -15,6 +15,7 @@ const navigation = [
   { name: 'Node.js (Legacy)', href: '/node-old' },
   { name: 'Troubleshooting', href: '/troubleshooting' },
   { name: 'Best Practices', href: '/best-practices' },
+  { name: 'WSL Enterprise Playbook', href: '/wsl-pro' },
   { name: 'Tools & Apps', href: '/tools' },
   { name: 'Resources', href: '/resources' },
   { name: 'Contact', href: '/contact' },
@@ -38,7 +39,7 @@ export default function Navigation() {
           </div>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center gap-2">
             {navigation.map((item) => (
               <Link
                 key={item.name}

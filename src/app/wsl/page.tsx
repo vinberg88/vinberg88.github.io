@@ -193,6 +193,225 @@ const resources = [
   }
 ]
 
+const tableOfContents = [
+  {
+    title: 'Why WSL matters',
+    href: '#why-wsl',
+    description: 'Explore the four pillars that blend Windows convenience with Linux fidelity.'
+  },
+  {
+    title: 'Choose your Linux distro',
+    href: '#choose-distro',
+    description: 'Compare Ubuntu, Debian, Fedora, and openSUSE profiles for WSL workloads.'
+  },
+  {
+    title: 'Install & configure WSL',
+    href: '#install',
+    description: 'Follow a hardened step-by-step installer playbook with repeatable commands.'
+  },
+  {
+    title: 'Manage distros like a pro',
+    href: '#distro-management',
+    description: 'Use wsl.exe commands to list, convert, export, and terminate distros cleanly.'
+  },
+  {
+    title: 'Daily Linux operations',
+    href: '#linux-ops',
+    description: 'Standardize package updates, installs, and cleanups across major distros.'
+  },
+  {
+    title: 'Desktop environments in WSL',
+    href: '#desktop-envs',
+    description: 'Install GNOME, KDE, or Xfce over WSLg for full-fledged Linux desktops.'
+  },
+  {
+    title: 'Integrate tooling',
+    href: '#integrations',
+    description: 'Wire up editors, containers, and automation runners to your WSL projects.'
+  },
+  {
+    title: 'Performance tuning',
+    href: '#performance',
+    description: 'Optimize storage layout, resource usage, and subsystem lifecycle.'
+  },
+  {
+    title: 'Automate everything',
+    href: '#automation',
+    description: 'Script onboarding, updates, backups, and compliance tasks for teams.'
+  },
+  {
+    title: 'Troubleshoot Linux behavior',
+    href: '#linux-troubleshooting',
+    description: 'Diagnose systemd, clock drift, disk growth, and NTFS performance issues.'
+  },
+  {
+    title: 'FAQ',
+    href: '#faq',
+    description: 'Get quick answers about systemd services, SSH key sharing, and Docker usage.'
+  },
+  {
+    title: 'Curated resources',
+    href: '#resources',
+    description: 'Jump to official docs, release notes, templates, and community projects.'
+  }
+]
+
+const distroProfiles = [
+  {
+    name: 'Ubuntu LTS',
+    tagline: 'Canonical-supported distro with predictable releases and the richest community docs.',
+    bestFor: 'Teams that want stability, long-term support (5 years), and easy access to PPAs for language stacks.',
+    packageManager: 'APT',
+    setupPointers: [
+      'Enable the Partner repository when you need proprietary fonts or codecs.',
+      'Use sudo apt install ubuntu-wsl to grab curated defaults tuned for WSL.'
+    ]
+  },
+  {
+    name: 'Debian Stable',
+    tagline: 'Minimalist base with conservative updates and rock-solid reliability.',
+    bestFor: 'CI agents, automation scripts, or developers who value minimal changes between updates.',
+    packageManager: 'APT',
+    setupPointers: [
+      'Add backports when you need newer toolchains such as GCC or Clang.',
+      'Pair with direnv and asdf to keep per-project tool versions isolated.'
+    ]
+  },
+  {
+    name: 'Fedora Kinoite / Workstation',
+    tagline: 'Leading-edge GNOME experience with SELinux and a fast cadence.',
+    bestFor: 'Frontier developers testing new compilers, GNOME tooling, or Wayland-first workflows.',
+    packageManager: 'DNF',
+    setupPointers: [
+      'Install sudo dnf groupinstall "Development Tools" for build essentials.',
+      'Use rpm-ostree for immutable deployments or when layering packages over Kinoite.'
+    ]
+  },
+  {
+    name: 'openSUSE Leap / Tumbleweed',
+    tagline: 'YaST-powered control with both rolling and regular release options.',
+    bestFor: 'Ops teams that need Btrfs snapshots, transactional updates, and granular system administration.',
+    packageManager: 'Zypper',
+    setupPointers: [
+      'Pattern-based installs (sudo zypper in -t pattern devel_basis) accelerate language bootstrapping.',
+      'Use snapper to snapshot before major changes; combine with wsl --export for belt-and-suspenders backups.'
+    ]
+  }
+]
+
+const packagePlaybook = [
+  {
+    distro: 'Ubuntu / Debian',
+    manager: 'APT',
+    commands: {
+      update: 'sudo apt update && sudo apt upgrade',
+      search: 'apt search <package>',
+      install: 'sudo apt install <package>',
+      cleanup: 'sudo apt autoremove && sudo apt clean'
+    }
+  },
+  {
+    distro: 'Fedora',
+    manager: 'DNF',
+    commands: {
+      update: 'sudo dnf upgrade --refresh',
+      search: 'dnf search <package>',
+      install: 'sudo dnf install <package>',
+      cleanup: 'sudo dnf autoremove'
+    }
+  },
+  {
+    distro: 'openSUSE',
+    manager: 'Zypper',
+    commands: {
+      update: 'sudo zypper refresh && sudo zypper update',
+      search: 'zypper search <package>',
+      install: 'sudo zypper install <package>',
+      cleanup: 'sudo zypper packages --orphaned'
+    }
+  }
+]
+
+const desktopOptions = [
+  {
+    name: 'Ubuntu Desktop (GNOME)',
+    notes: 'Full GNOME Shell experience with WSLg support for windowed apps.',
+    steps: [
+      'sudo apt install ubuntu-desktop --no-install-recommends',
+      'wsl --shutdown to restart the subsystem with new systemd targets.',
+      'Use systemctl --user enable --now gnome-keyring-daemon.service for credential prompts.'
+    ]
+  },
+  {
+    name: 'KDE Plasma',
+    notes: 'Highly customizable Qt-based desktop, great for multi-monitor productivity.',
+    steps: [
+      'sudo apt install kde-plasma-desktop or sudo dnf groupinstall "KDE Plasma Workspaces"',
+      'Install xdg-desktop-portal-kde to improve file dialogs and clipboard bridging.',
+      'Set the QT_QPA_PLATFORMTHEME=qt5ct environment variable if theming looks inconsistent.'
+    ]
+  },
+  {
+    name: 'Xfce minimal desktop',
+    notes: 'Lightweight alternative for resource-constrained machines.',
+    steps: [
+      'sudo apt install xubuntu-desktop --no-install-recommends',
+      'Disable screen lockers (light-locker-command -a) to avoid blank resume screens inside WSLg.',
+      'Map Super key shortcuts via xfconf-query for quick launchers alongside Windows hotkeys.'
+    ]
+  }
+]
+
+const linuxLifelines = [
+  {
+    title: 'Systemd not starting?',
+    description: 'Make sure your distro has systemd enabled in /etc/wsl.conf and that you are on WSL 2.',
+    actions: [
+      'Add [boot]\nsystemd=true to /etc/wsl.conf and restart with wsl --shutdown.',
+      'Verify with systemctl list-units --type=target --state=running.'
+    ]
+  },
+  {
+    title: 'Clock skew between Windows and Linux',
+    description: 'Occasional suspend/resume cycles can desync the hardware clock inside the VM.',
+    actions: [
+      'Run sudo hwclock --hctosys or use timedatectl set-ntp true.',
+      'Schedule wsl.exe --shutdown on resume events via Task Scheduler for clean sync.'
+    ]
+  },
+  {
+    title: 'High disk usage in ext4.vhdx',
+    description: 'Large node_modules or Docker layers can bloat the virtual disk.',
+    actions: [
+      'Use sudo du -sh /* to spot growth hotspots.',
+      'Compact the disk from Windows: wsl --shutdown && diskpart > select vdisk file=C:\\Users\\<you>\\AppData\\Local\\Packages\\...\\ext4.vhdx > compact vdisk.'
+    ]
+  },
+  {
+    title: 'Slow filesystem access from /mnt/c',
+    description: 'NTFS passthrough is convenient but slower for many small files.',
+    actions: [
+      'Clone repos into ~/projects and use git config --global core.autocrlf input.',
+      'Leverage \[automount\] options in /etc/wsl.conf to disable metadata translation when not required.'
+    ]
+  }
+]
+
+const faqEntries = [
+  {
+    question: 'Can I run systemd services automatically?',
+    answer: 'Yes. Enable systemd in /etc/wsl.conf, then use systemctl --user enable for per-user timers or systemctl enable for global services. WSL 2 honors dependencies on boot.'
+  },
+  {
+    question: 'How do I share SSH keys securely?',
+    answer: 'Store keys in your Windows profile, then use ln -s /mnt/c/Users/<you>/.ssh ~/.ssh with chmod 600 permissions inside WSL. Consider Windows Hello backed FIDO2 keys for hardware security.'
+  },
+  {
+    question: 'Is Docker Desktop required?',
+    answer: 'Not strictly. Native Docker Engine on WSL works with dockerd-rootless-setuptool.sh or dockerd, but Docker Desktop simplifies updates, networking, and credential helpers.'
+  }
+]
+
 export default function WslPage() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -249,6 +468,27 @@ export default function WslPage() {
               </div>
             </div>
             <div className="w-full lg:w-5/12">
+              <div className="mb-6 flex justify-center">
+                <a
+                  href="https://github.com/vinberg88/opensuse"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative inline-block"
+                  aria-label="Visit the vinberg88 openSUSE project on GitHub"
+                >
+                  <div className="relative h-32 w-32 rounded-full border-4 border-white/40 shadow-xl shadow-black/20 overflow-hidden transition-transform duration-200 group-hover:scale-105">
+                    <img
+                      src="https://lh3.googleusercontent.com/a/ACg8ocIsVLpogTErfcIeG65iS3MKzgtHCIuaxuo2Te9BmkBYPVci96qs=s288-c-no"
+                      alt="Portrait of Mattias Vinberg"
+                      className="h-full w-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-wsl-blue/10 via-transparent to-emerald-300/20" />
+                  </div>
+                  <div className="mt-3 text-center text-sm text-white/80 group-hover:text-white">
+                    Explore my openSUSE configs →
+                  </div>
+                </a>
+              </div>
               <div className="relative rounded-2xl bg-gray-900/80 backdrop-blur border border-white/15 shadow-xl shadow-black/20 overflow-hidden">
                 <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-lime-300 via-sky-300 to-cyan-300" />
                 <div className="px-6 pt-6 pb-3">
@@ -286,7 +526,41 @@ export default function WslPage() {
 
       <section className="py-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="card mb-12">
+          <div className="card mb-12" id="table-of-contents">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Navigate this guide</h2>
+            <p className="text-gray-700 dark:text-gray-300 mb-6">
+              Jump directly to the topics you need. Every anchor links to a detailed section that expands on Linux workflows inside WSL.
+            </p>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {tableOfContents.map((item, index) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-label={`${item.title} section`}
+                  className="group relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/60 px-5 py-4 flex items-start gap-4 transition-all duration-200 hover:-translate-y-1 hover:border-wsl-blue/60 dark:hover:border-emerald-300/60 hover:shadow-lg hover:shadow-wsl-blue/10"
+                >
+                  <span className="mt-1 flex h-8 w-8 items-center justify-center rounded-lg bg-wsl-blue/10 text-sm font-semibold text-wsl-blue dark:bg-wsl-blue/20 dark:text-emerald-200">
+                    {index + 1 < 10 ? `0${index + 1}` : index + 1}
+                  </span>
+                  <div className="flex-1">
+                    <p className="text-base font-semibold text-gray-900 dark:text-gray-100 group-hover:text-wsl-blue dark:group-hover:text-emerald-300">
+                      {item.title}
+                    </p>
+                    <p className="mt-1 text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                  <span className="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full border border-transparent text-wsl-blue dark:text-emerald-300 group-hover:bg-wsl-blue/10 group-hover:border-wsl-blue/40 group-hover:dark:bg-emerald-300/10">
+                    <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="card mb-12" id="why-wsl">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Why WSL 2 is a powerhouse for developers</h2>
             <p className="text-gray-700 dark:text-gray-300 mb-8">
               WSL bridges Windows and Linux so you can choose the best tool for each job without leaving your flow. These pillars show how it balances fidelity, convenience, and governance for modern teams.
@@ -301,6 +575,37 @@ export default function WslPage() {
                       <li key={bullet}>{bullet}</li>
                     ))}
                   </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="card mb-12" id="choose-distro">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Choose the right Linux distro for WSL</h2>
+            <p className="text-gray-700 dark:text-gray-300 mb-8">
+              Each distribution balances release cadence, package availability, and administrative tooling differently. Start with the profile that aligns with your workloads, then branch out for specialized stacks.
+            </p>
+            <div className="grid gap-6 md:grid-cols-2">
+              {distroProfiles.map((profile) => (
+                <div key={profile.name} className="bg-white/80 dark:bg-gray-900/60 border border-gray-100 dark:border-gray-800 rounded-xl p-6 flex flex-col h-full">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">{profile.name}</h3>
+                    <span className="text-xs font-semibold uppercase tracking-wide text-wsl-blue dark:text-emerald-300">
+                      {profile.packageManager}
+                    </span>
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">{profile.tagline}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                    <span className="font-semibold text-gray-700 dark:text-gray-200">Best for:</span> {profile.bestFor}
+                  </p>
+                  <ul className="list-disc list-inside space-y-2 text-sm text-gray-600 dark:text-gray-300 mb-4">
+                    {profile.setupPointers.map((note) => (
+                      <li key={note}>{note}</li>
+                    ))}
+                  </ul>
+                  <div className="mt-auto pt-4 border-t border-gray-200 dark:border-gray-800 text-sm text-gray-500 dark:text-gray-400">
+                    Tip: pair distro exports (wsl --export) with your dotfiles repo for reproducible environments.
+                  </div>
                 </div>
               ))}
             </div>
@@ -360,7 +665,83 @@ export default function WslPage() {
             </div>
           </div>
 
-          <div className="card mb-12">
+          <div className="card mb-12" id="linux-ops">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Daily Linux operations playbook</h2>
+            <p className="text-gray-700 dark:text-gray-300 mb-8">
+              Keep your distributions healthy with a predictable maintenance rhythm. Standardize package manager commands so teammates and automation know exactly what to run.
+            </p>
+            <div className="grid gap-6 md:grid-cols-3">
+              {packagePlaybook.map((entry) => (
+                <div key={entry.distro} className="bg-white/80 dark:bg-gray-900/60 border border-gray-100 dark:border-gray-800 rounded-xl p-6 flex flex-col">
+                  <div className="mb-4">
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">{entry.distro}</h3>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">Package manager: {entry.manager}</p>
+                  </div>
+                  <div className="terminal-window mt-auto">
+                    <div className="terminal-header">
+                      <div className="terminal-dot bg-red-500" />
+                      <div className="terminal-dot bg-yellow-500" />
+                      <div className="terminal-dot bg-green-500" />
+                      <span className="ml-3 text-gray-300 text-xs">Shell</span>
+                    </div>
+                    <div className="terminal-content text-xs space-y-2">
+                      <div>
+                        <span className="text-lime-300"># Update</span>
+                        <pre className="text-white whitespace-pre-wrap">{entry.commands.update}</pre>
+                      </div>
+                      <div>
+                        <span className="text-lime-300"># Search</span>
+                        <pre className="text-white whitespace-pre-wrap">{entry.commands.search}</pre>
+                      </div>
+                      <div>
+                        <span className="text-lime-300"># Install</span>
+                        <pre className="text-white whitespace-pre-wrap">{entry.commands.install}</pre>
+                      </div>
+                      <div>
+                        <span className="text-lime-300"># Cleanup</span>
+                        <pre className="text-white whitespace-pre-wrap">{entry.commands.cleanup}</pre>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="mt-6 text-sm text-gray-500 dark:text-gray-400">
+              Store these commands in a shared README.md or onboarding script so every new hire understands the expected hygiene tasks.
+            </p>
+          </div>
+
+          <div className="card mb-12" id="desktop-envs">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Desktop environments in WSLg</h2>
+            <p className="text-gray-700 dark:text-gray-300 mb-8">
+              WSLg brings full Linux GUI support. These desktop recipes give you a polished workstation without leaving Windows. Pick the one that matches your workflow and hardware budget.
+            </p>
+            <div className="space-y-6">
+              {desktopOptions.map((option) => (
+                <div key={option.name} className="bg-white/80 dark:bg-gray-900/60 border border-gray-100 dark:border-gray-800 rounded-xl p-6">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+                    <div>
+                      <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">{option.name}</h3>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">{option.notes}</p>
+                    </div>
+                    <span className="inline-flex items-center rounded-full bg-blue-50 dark:bg-wsl-blue/10 px-3 py-1 text-xs font-medium text-wsl-blue dark:text-emerald-300">
+                      WSLg ready
+                    </span>
+                  </div>
+                  <ol className="list-decimal list-inside space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                    {option.steps.map((step) => (
+                      <li key={step}>{step}</li>
+                    ))}
+                  </ol>
+                </div>
+              ))}
+            </div>
+            <p className="mt-6 text-sm text-gray-500 dark:text-gray-400">
+              Heads up: heavy desktop sessions can increase VRAM usage. Use <code className="font-mono text-xs">wsl --shutdown</code> after long GUI sessions to reclaim resources.
+            </p>
+          </div>
+
+          <div className="card mb-12" id="integrations">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Integrate WSL with your tooling</h2>
             <p className="text-gray-700 dark:text-gray-300 mb-8">
               WSL thrives when you pair it with modern editors, container runtimes, and automation workflows. Start with these integration patterns and tailor them to your stack.
@@ -379,7 +760,7 @@ export default function WslPage() {
             </div>
           </div>
 
-          <div className="card mb-12">
+          <div className="card mb-12" id="performance">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Performance tuning & reliability</h2>
             <div className="grid gap-6 md:grid-cols-3">
               {performance.map((item) => (
@@ -391,7 +772,7 @@ export default function WslPage() {
             </div>
           </div>
 
-          <div className="card mb-12">
+          <div className="card mb-12" id="automation">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Automate everything</h2>
             <p className="text-gray-700 dark:text-gray-300 mb-8">
               Treat WSL environments as disposable, reproducible dev shells. Automation keeps everyone aligned, whether you manage a team or personal projects.
@@ -411,7 +792,39 @@ export default function WslPage() {
             </div>
           </div>
 
-          <div className="card">
+          <div className="card mb-12" id="linux-troubleshooting">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Troubleshoot Linux behavior</h2>
+            <p className="text-gray-700 dark:text-gray-300 mb-8">
+              When the Linux side of WSL misbehaves, use these diagnostics before rebuilding a distro. They capture the most common cross-OS friction points.
+            </p>
+            <div className="space-y-6">
+              {linuxLifelines.map((lifeline) => (
+                <div key={lifeline.title} className="bg-white/80 dark:bg-gray-900/60 border border-gray-100 dark:border-gray-800 rounded-xl p-6">
+                  <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-2">{lifeline.title}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">{lifeline.description}</p>
+                  <ul className="list-disc list-inside space-y-2 text-sm text-gray-600 dark:text-gray-300">
+                    {lifeline.actions.map((action) => (
+                      <li key={action}>{action}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="card mb-12" id="faq">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Frequently asked questions</h2>
+            <div className="space-y-6">
+              {faqEntries.map((entry) => (
+                <div key={entry.question} className="bg-white/80 dark:bg-gray-900/60 border border-gray-100 dark:border-gray-800 rounded-xl p-6">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">{entry.question}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{entry.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="card" id="resources">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Curated resources</h2>
             <p className="text-gray-700 dark:text-gray-300 mb-6">
               Keep this list handy as you explore deeper capabilities, troubleshoot edge cases, or align a Windows fleet around WSL-based development.
@@ -438,6 +851,10 @@ export default function WslPage() {
               <span className="hidden sm:inline">\u2022</span>
               <Link href="/node/" className="text-wsl-blue dark:text-emerald-300 font-semibold underline-offset-4 hover:underline">
                 Jump to the Node.js guide
+              </Link>
+              <span className="hidden sm:inline">\u2022</span>
+              <Link href="/wsl-pro/" className="text-wsl-blue dark:text-emerald-300 font-semibold underline-offset-4 hover:underline">
+                Explore the WSL enterprise playbook
               </Link>
             </div>
           </div>
