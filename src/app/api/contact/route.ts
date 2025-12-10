@@ -131,7 +131,7 @@ Timestamp: ${new Date().toISOString()}
 
     console.log('Message sent: %s', info.messageId)
     if (process.env.NODE_ENV !== 'production') {
-      const previewUrl = nodemailer.getTestMessageUrl(info as any)
+      const previewUrl = nodemailer.getTestMessageUrl(info as SMTPTransport.SentMessageInfo)
       if (previewUrl) {
         console.log('Preview URL: %s', previewUrl)
       }
@@ -195,7 +195,7 @@ The WSL Guide Team
     const autoReplyInfo = await transporter.sendMail(autoReplyOptions)
 
     if (process.env.NODE_ENV !== 'production') {
-      const autoReplyPreview = nodemailer.getTestMessageUrl(autoReplyInfo as any)
+      const autoReplyPreview = nodemailer.getTestMessageUrl(autoReplyInfo as SMTPTransport.SentMessageInfo)
       if (autoReplyPreview) {
         console.log('Auto-reply preview URL: %s', autoReplyPreview)
       }
