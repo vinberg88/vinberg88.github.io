@@ -126,6 +126,19 @@ export default function GpuAiPage() {
                     <span className="text-blue-400">~</span>
                     <span className="text-white">$ sudo mv cuda-wsl-ubuntu.pin /etc/apt/preferences.d/cuda-repository-pin-600</span>
                   </div>
+                  <div className="mt-2 text-gray-400"># Install the CUDA keyring package (adds repo + signing key)</div>
+                  <div>
+                    <span className="text-wsl-green">user@wsl</span>
+                    <span className="text-blue-300">:</span>
+                    <span className="text-blue-400">~</span>
+                    <span className="text-white">$ wget https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-keyring_1.1-1_all.deb</span>
+                  </div>
+                  <div>
+                    <span className="text-wsl-green">user@wsl</span>
+                    <span className="text-blue-300">:</span>
+                    <span className="text-blue-400">~</span>
+                    <span className="text-white">$ sudo dpkg -i cuda-keyring_1.1-1_all.deb</span>
+                  </div>
                   <div className="mt-2 text-gray-400"># Install CUDA toolkit (without the driver)</div>
                   <div>
                     <span className="text-wsl-green">user@wsl</span>
