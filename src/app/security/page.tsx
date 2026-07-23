@@ -44,7 +44,7 @@ export default function SecurityPage() {
               </div>
             </div>
 
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Block Inbound Connections to WSL</h3>
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Prioritize SSH Before Blocking Other Inbound Connections</h3>
             <div className="terminal-window mb-6">
               <div className="terminal-header">
                 <div className="terminal-dot bg-red-500"></div>
@@ -54,15 +54,15 @@ export default function SecurityPage() {
               </div>
               <div className="terminal-content">
                 <div className="space-y-2">
-                  <div className="text-gray-400"># Block all inbound traffic to WSL except SSH</div>
+                  <div className="text-gray-400"># Give the SSH allow rule a higher priority (lower number) than the blanket block rule</div>
                   <div>
                     <span className="text-blue-400">PS&gt;</span>
-                    <span className="text-white ml-2">New-NetFirewallHyperVRule -Name &quot;BlockWSLInbound&quot; -Direction Inbound -Action Block -VMCreatorId &apos;{'{'}40E0AC32-46A5-438A-A0B2-2B479E8F2E90{'}'}&apos;</span>
+                    <span className="text-white ml-2">New-NetFirewallHyperVRule -Name &quot;AllowWSLSSH&quot; -Direction Inbound -Action Allow -LocalPort 2222 -Protocol TCP -VMCreatorId &apos;{'{'}40E0AC32-46A5-438A-A0B2-2B479E8F2E90{'}'}&apos; -Priority 10</span>
                   </div>
-                  <div className="mt-2 text-gray-400"># Allow SSH specifically</div>
+                  <div className="mt-2 text-gray-400"># Lower-priority blanket block still applies to every other inbound connection</div>
                   <div>
                     <span className="text-blue-400">PS&gt;</span>
-                    <span className="text-white ml-2">New-NetFirewallHyperVRule -Name &quot;AllowWSLSSH&quot; -Direction Inbound -Action Allow -LocalPort 22 -Protocol TCP -VMCreatorId &apos;{'{'}40E0AC32-46A5-438A-A0B2-2B479E8F2E90{'}'}&apos;</span>
+                    <span className="text-white ml-2">New-NetFirewallHyperVRule -Name &quot;BlockWSLInbound&quot; -Direction Inbound -Action Block -VMCreatorId &apos;{'{'}40E0AC32-46A5-438A-A0B2-2B479E8F2E90{'}'}&apos; -Priority 100</span>
                   </div>
                 </div>
               </div>
