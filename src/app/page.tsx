@@ -101,6 +101,14 @@ const terminalOnboarding = [
   },
   {
     prompt: 'PS C:\\>',
+    command: 'wsl --install -d Arch'
+  },
+  {
+    prompt: 'PS C:\\>',
+    command: 'wsl --install -d Fedora'
+  },
+  {
+    prompt: 'PS C:\\>',
     command: 'wsl --set-default-version 2'
   },
   {
@@ -285,16 +293,22 @@ export default function HomePage() {
                   <div className="terminal-dot bg-green-500" />
                   <span className="ml-3 text-gray-300 text-xs">automation.ps1</span>
                 </div>
-                <div className="terminal-content text-sm space-y-2">
-                  <code className="text-white"># Convert your distro fleet to WSL 2</code>
-                  <code className="text-emerald-300">
-                    wsl -l -q | ForEach-Object{' '}
-                    {'{'} wsl --set-version $_ 2 {'}'}
-                  </code>
-                  <code className="text-white"># Apply your org .wslconfig everywhere</code>
-                  <code className="text-emerald-300">Copy-Item .wslconfig $env:USERPROFILE\\.wslconfig</code>
-                  <code className="text-white"># Snapshot for rollback</code>
-                  <code className="text-emerald-300">wsl --export Ubuntu-26.04 backups\\ubuntu-$(Get-Date -Format yyyyMMdd).tar</code>
+                <div className="terminal-content text-sm space-y-3">
+                  <div>
+                    <code className="text-white block"># Convert your distro fleet to WSL 2</code>
+                    <code className="text-emerald-300 block">
+                      wsl -l -q | ForEach-Object{' '}
+                      {'{'} wsl --set-version $_ 2 {'}'}
+                    </code>
+                  </div>
+                  <div>
+                    <code className="text-white block"># Apply your org .wslconfig everywhere</code>
+                    <code className="text-emerald-300 block">Copy-Item .wslconfig $env:USERPROFILE\\.wslconfig</code>
+                  </div>
+                  <div>
+                    <code className="text-white block"># Snapshot for rollback</code>
+                    <code className="text-emerald-300 block">wsl --export Ubuntu-26.04 backups\\ubuntu-$(Get-Date -Format yyyyMMdd).tar</code>
+                  </div>
                 </div>
               </div>
               <div className="card bg-gradient-to-br from-indigo-600/20 via-blue-600/20 to-emerald-500/20 border border-indigo-500/20">
