@@ -239,7 +239,7 @@ export default function SecurityPage() {
                         <span className="text-wsl-green">user@wsl</span>
                         <span className="text-blue-300">:</span>
                         <span className="text-blue-400">~</span>
-                        <span className="text-white">$ git config --global credential.helper /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe</span>
+                        <span className="text-white">$ git config --global credential.helper &quot;/mnt/c/Program Files/Git/mingw64/bin/git-credential-manager.exe&quot;</span>
                       </div>
                     </div>
                   </div>
