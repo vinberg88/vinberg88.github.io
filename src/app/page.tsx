@@ -101,6 +101,14 @@ const terminalOnboarding = [
   },
   {
     prompt: 'PS C:\\>',
+    command: 'wsl --install -d Arch'
+  },
+  {
+    prompt: 'PS C:\\>',
+    command: 'wsl --install -d Fedora'
+  },
+  {
+    prompt: 'PS C:\\>',
     command: 'wsl --set-default-version 2'
   },
   {
