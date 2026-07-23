@@ -101,7 +101,7 @@ export default function SecurityPage() {
                     <span className="text-wsl-green">user@wsl</span>
                     <span className="text-blue-300">:</span>
                     <span className="text-blue-400">~</span>
-                    <span className="text-white">$ sudo ufw allow 22/tcp</span>
+                    <span className="text-white">$ sudo ufw allow 2222/tcp</span>
                   </div>
                   <div>
                     <span className="text-wsl-green">user@wsl</span>
