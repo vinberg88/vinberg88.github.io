@@ -201,7 +201,17 @@ export default function InstallationPage() {
                         <span className="text-blue-400">PS&gt;</span>
                         <span className="text-white ml-2">wsl --install -d Ubuntu</span>
                       </div>
-                      <div className="text-gray-400 mt-4"># Or list available distributions</div>
+                      <div className="text-gray-400 mt-4"># Or install Arch Linux</div>
+                      <div>
+                        <span className="text-blue-400">PS&gt;</span>
+                        <span className="text-white ml-2">wsl --install -d Arch</span>
+                      </div>
+                      <div className="text-gray-400 mt-4"># Or install Fedora</div>
+                      <div>
+                        <span className="text-blue-400">PS&gt;</span>
+                        <span className="text-white ml-2">wsl --install -d Fedora</span>
+                      </div>
+                      <div className="text-gray-400 mt-4"># List all available distributions</div>
                       <div>
                         <span className="text-blue-400">PS&gt;</span>
                         <span className="text-white ml-2">wsl --list --online</span>
