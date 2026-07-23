@@ -171,7 +171,7 @@ const automationPatterns = [
     description:
       'Create a PowerShell script that installs WSL, configures policies, and seeds base images without manual intervention.',
     snippet: `# Install WSL and a curated Ubuntu image
-wsl --install -d Ubuntu-24.04 --web-download
+wsl --install -d Ubuntu-26.04 --web-download
 wsl --update
 wsl --set-default-version 2
 

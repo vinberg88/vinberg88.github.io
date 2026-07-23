@@ -63,6 +63,24 @@ const spotlightRoutes = [
       'Architectural insights, distro management checklists, and automation patterns for serious WSL practitioners.'
   },
   {
+    name: 'GPU & AI in WSL',
+    href: '/gpu-ai/',
+    summary:
+      'GPU passthrough, CUDA toolkit setup, PyTorch and TensorFlow configuration, and Jupyter notebooks inside WSL.'
+  },
+  {
+    name: 'Networking Deep Dive',
+    href: '/networking/',
+    summary:
+      'Port forwarding, DNS configuration, VPN compatibility fixes, and the mirrored networking mode explained.'
+  },
+  {
+    name: 'Security Hardening',
+    href: '/security/',
+    summary:
+      'Firewall rules, SSH hardening, secrets management, and Windows Defender integration for a locked-down WSL setup.'
+  },
+  {
     name: 'WSL Enterprise Playbook',
     href: '/wsl-pro/',
     summary:
@@ -79,7 +97,7 @@ const spotlightRoutes = [
 const terminalOnboarding = [
   {
     prompt: 'PS C:\\>',
-    command: 'wsl --install -d Ubuntu-24.04'
+    command: 'wsl --install -d Ubuntu-26.04'
   },
   {
     prompt: 'PS C:\\>',
@@ -87,7 +105,7 @@ const terminalOnboarding = [
   },
   {
     prompt: 'PS C:\\>',
-    command: 'wsl --export Ubuntu-24.04 \\Backups\\ubuntu-base.tar'
+    command: 'wsl --export Ubuntu-26.04 \\Backups\\ubuntu-base.tar'
   },
   {
     prompt: 'user@wsl:~$',
@@ -276,7 +294,7 @@ export default function HomePage() {
                   <code className="text-white"># Apply your org .wslconfig everywhere</code>
                   <code className="text-emerald-300">Copy-Item .wslconfig $env:USERPROFILE\\.wslconfig</code>
                   <code className="text-white"># Snapshot for rollback</code>
-                  <code className="text-emerald-300">wsl --export Ubuntu-24.04 backups\\ubuntu-$(Get-Date -Format yyyyMMdd).tar</code>
+                  <code className="text-emerald-300">wsl --export Ubuntu-26.04 backups\\ubuntu-$(Get-Date -Format yyyyMMdd).tar</code>
                 </div>
               </div>
               <div className="card bg-gradient-to-br from-indigo-600/20 via-blue-600/20 to-emerald-500/20 border border-indigo-500/20">
@@ -309,7 +327,7 @@ export default function HomePage() {
               language-specific tooling.
             </p>
           </div>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="mt-12 grid gap-6 md:grid-cols-3 lg:grid-cols-3">
             {spotlightRoutes.map((route) => (
               <Link
                 key={route.name}
@@ -443,6 +461,9 @@ export default function HomePage() {
             {[
               { label: 'WSL Deep Dive', href: '/wsl/' },
               { label: 'Enterprise Playbook', href: '/wsl-pro/' },
+              { label: 'GPU & AI', href: '/gpu-ai/' },
+              { label: 'Networking', href: '/networking/' },
+              { label: 'Security', href: '/security/' },
               { label: 'Troubleshooting', href: '/troubleshooting/' },
               { label: 'Tools & Apps', href: '/tools/' },
               { label: 'Resources', href: '/resources/' },
