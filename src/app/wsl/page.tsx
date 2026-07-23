@@ -70,11 +70,11 @@ const distroCommands = [
     description: 'List installed distributions with their version (WSL 1 or WSL 2) and current state.'
   },
   {
-    command: 'wsl --set-version Ubuntu-24.04 2',
+    command: 'wsl --set-version Ubuntu-26.04 2',
     description: 'Convert a distro to WSL 2 when you need full system call compatibility and better file I/O.'
   },
   {
-    command: 'wsl --set-default Ubuntu-24.04',
+    command: 'wsl --set-default Ubuntu-26.04',
     description: 'Choose the distribution that launches when you type wsl in Windows Terminal.'
   },
   {
@@ -82,7 +82,7 @@ const distroCommands = [
     description: 'Capture a snapshot you can version, store off-machine, or restore with wsl --import.'
   },
   {
-    command: 'wsl --terminate Ubuntu-24.04',
+    command: 'wsl --terminate Ubuntu-26.04',
     description: 'Gracefully shut down a running distro before freeing disk space or resizing the virtual disk.'
   }
 ]

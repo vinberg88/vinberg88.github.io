@@ -175,6 +175,69 @@ const navigation = [
     ),
   },
   {
+    name: 'GPU & AI',
+    href: '/gpu-ai',
+    icon: (
+      <svg
+        className={iconClasses}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={1.6}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <rect x={4} y={6} width={16} height={12} rx={2} />
+        <path d="M9 10v4" />
+        <path d="M12 9v6" />
+        <path d="M15 11v2" />
+      </svg>
+    ),
+  },
+  {
+    name: 'Networking',
+    href: '/networking',
+    icon: (
+      <svg
+        className={iconClasses}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={1.6}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <circle cx={12} cy={5.5} r={2} />
+        <circle cx={6} cy={18} r={2} />
+        <circle cx={18} cy={18} r={2} />
+        <path d="M12 7.5v4.5" />
+        <path d="M12 12 7 16" />
+        <path d="M12 12l5 4" />
+      </svg>
+    ),
+  },
+  {
+    name: 'Security',
+    href: '/security',
+    icon: (
+      <svg
+        className={iconClasses}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={1.6}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M12 3.5 4.5 7v5c0 4.7 3.2 9.1 7.5 10 4.3-.9 7.5-5.3 7.5-10V7Z" />
+        <path d="m9.5 12 1.75 1.75L15 10.5" />
+      </svg>
+    ),
+  },
+  {
     name: 'Tools & Apps',
     href: '/tools',
     icon: (
