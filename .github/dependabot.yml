@@ -1,4 +1,6 @@
-# Dependabot configuration for npm dependencies
+# Dependabot configuration for npm dependencies.
+# Keep package-lock.json valid and in sync with package.json; Dependabot parses
+# the lockfile before resolving version and security updates.
 # https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 
 version: 2
