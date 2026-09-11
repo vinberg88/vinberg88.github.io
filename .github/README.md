@@ -10,7 +10,9 @@ machine without needing a separate virtual machine or dual-booting.
 
 Here you have more stuff about WSL and other desktops for Linux and Windows 11/10 to build.
 
-https://github.com/vinberg88/opensuse
+Old page for WSL: https://github.com/vinberg88/opensuse
+
+More info here for new WSL page: https://github.com/vinberg88/
 
 <img width="1536" height="1024" alt="WSL" src="https://github.com/user-attachments/assets/c59ae9e6-fdeb-4f0b-be5c-4ede69322ac4" />
 <br>
